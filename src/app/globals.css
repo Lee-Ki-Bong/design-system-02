@@ -45,6 +45,11 @@
   src: url('/fonts/Pretendard-Light.subset.woff2') format('woff2');
 }
 
+/* TODO(global): 커스텀 스크롤바 스타일 (토큰 기반, 다크모드 대응) */
+html {
+  scroll-behavior: smooth;
+}
+
 @theme inline {
   --font-sans: 'Pretendard', -apple-system, system-ui, 'Noto Sans KR', sans-serif;
   --color-background: var(--color-bg);
