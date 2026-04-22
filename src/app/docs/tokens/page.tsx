@@ -244,6 +244,71 @@ function ColorSection() {
           <ColorSwatch name="On Surface" variable="--color-on-surface" />
         </div>
       </ThemeSplit>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Avatar / Decorative Accents
+      </h3>
+      <ThemeSplit>
+        <div className="flex gap-6">
+          <ColorSwatch name="Blue" variable="--accent-blue" />
+          <ColorSwatch name="Rose" variable="--accent-rose" />
+          <ColorSwatch name="Amber" variable="--accent-amber" />
+          <ColorSwatch name="Teal" variable="--accent-teal" />
+          <ColorSwatch name="Violet" variable="--accent-violet" />
+        </div>
+      </ThemeSplit>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Overlay & Focus Ring
+      </h3>
+      <ThemeSplit>
+        <div className="flex gap-8">
+          <div className="flex flex-col items-center gap-2">
+            <div
+              className="h-14 w-14 rounded-xl"
+              style={{ backgroundColor: 'var(--color-overlay)' }}
+            />
+            <span className="text-xs font-medium" style={{ color: 'var(--color-text)' }}>
+              Overlay
+            </span>
+            <span className="text-xs" style={{ color: 'var(--color-text-disabled)' }}>
+              --color-overlay
+            </span>
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <div
+              className="h-14 w-14 rounded-xl"
+              style={{
+                backgroundColor: 'var(--color-surface-raised)',
+                border: '1px solid var(--color-border-subtle)',
+                boxShadow: 'var(--ring)',
+              }}
+            />
+            <span className="text-xs font-medium" style={{ color: 'var(--color-text)' }}>
+              Ring
+            </span>
+            <span className="text-xs" style={{ color: 'var(--color-text-disabled)' }}>
+              --ring
+            </span>
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <div
+              className="h-14 w-14 rounded-xl"
+              style={{
+                backgroundColor: 'var(--color-surface-raised)',
+                border: '1px solid var(--color-border-subtle)',
+                boxShadow: 'var(--ring-emphasis)',
+              }}
+            />
+            <span className="text-xs font-medium" style={{ color: 'var(--color-text)' }}>
+              Ring Emphasis
+            </span>
+            <span className="text-xs" style={{ color: 'var(--color-text-disabled)' }}>
+              --ring-emphasis
+            </span>
+          </div>
+        </div>
+      </ThemeSplit>
     </section>
   );
 }
