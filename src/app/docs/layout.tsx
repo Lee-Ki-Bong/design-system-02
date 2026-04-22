@@ -92,7 +92,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
           height: 6px;
           border-radius: 50%;
           background: currentColor;
-          opacity: 0.4;
+          opacity: var(--opacity-disabled);
           flex-shrink: 0;
         }
         .sb-item.active .dot {

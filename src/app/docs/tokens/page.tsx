@@ -17,6 +17,8 @@ const sections = [
   { id: 'shape', title: 'Shape', description: 'Radius, Shadow' },
   { id: 'motion', title: 'Motion', description: 'Duration, Easing' },
   { id: 'zindex', title: 'Z-index', description: 'Layer Stack' },
+  { id: 'opacity', title: 'Opacity', description: 'Disabled, Hover, Overlay' },
+  { id: 'border-width', title: 'Border Width', description: 'Thin, Thick' },
 ];
 
 function ColorSwatch({ name, variable }: { name: string; variable: string }) {
@@ -967,6 +969,133 @@ function ZindexSection() {
   );
 }
 
+const opacityScale = [
+  { name: 'disabled', variable: '--opacity-disabled', value: '0.4', desc: 'disabled 상태' },
+  { name: 'overlay', variable: '--opacity-overlay', value: '0.6', desc: 'modal backdrop' },
+  { name: 'pressed', variable: '--opacity-pressed', value: '0.65', desc: 'active/pressed' },
+  { name: 'hover', variable: '--opacity-hover', value: '0.75', desc: '일반 hover' },
+  {
+    name: 'hover-subtle',
+    variable: '--opacity-hover-subtle',
+    value: '0.85',
+    desc: 'emphasis hover',
+  },
+];
+
+const borderWidthScale = [
+  { name: 'thin', variable: '--border-width-thin', value: '1px', desc: '카드, 구분선, 패널' },
+  { name: 'thick', variable: '--border-width-thick', value: '2px', desc: 'focus, active, spinner' },
+];
+
+function OpacitySection() {
+  return (
+    <section id="opacity">
+      <h2 className="text-xl font-bold" style={{ color: 'var(--color-emphasis)' }}>
+        Opacity
+      </h2>
+      <p className="mt-1 text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
+        Disabled, Hover, Overlay
+      </p>
+
+      <div
+        className="mt-4 rounded-2xl p-6"
+        style={{
+          backgroundColor: 'var(--color-surface-raised)',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <div className="flex flex-col gap-4">
+          {opacityScale.map((o) => (
+            <div key={o.variable} className="flex items-center gap-4">
+              <span
+                className="shrink-0 w-24 text-xs text-right"
+                style={{ color: 'var(--color-text-disabled)' }}
+              >
+                {o.name}
+              </span>
+              <div className="relative h-8 w-32 rounded-lg overflow-hidden">
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      'repeating-conic-gradient(var(--color-border) 0% 25%, var(--color-surface-raised) 0% 50%) 0 0 / 12px 12px',
+                  }}
+                />
+                <div
+                  className="absolute inset-0 rounded-lg"
+                  style={{
+                    backgroundColor: 'var(--color-emphasis)',
+                    opacity: `var(${o.variable})`,
+                  }}
+                />
+              </div>
+              <span className="text-xs font-medium" style={{ color: 'var(--color-text)' }}>
+                {o.value}
+              </span>
+              <span className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
+                {o.variable}
+              </span>
+              <span className="text-xs" style={{ color: 'var(--color-text-disabled)' }}>
+                {o.desc}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BorderWidthSection() {
+  return (
+    <section id="border-width">
+      <h2 className="text-xl font-bold" style={{ color: 'var(--color-emphasis)' }}>
+        Border Width
+      </h2>
+      <p className="mt-1 text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
+        Thin, Thick
+      </p>
+
+      <div
+        className="mt-4 rounded-2xl p-6"
+        style={{
+          backgroundColor: 'var(--color-surface-raised)',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <div className="flex flex-col gap-4">
+          {borderWidthScale.map((b) => (
+            <div key={b.variable} className="flex items-center gap-4">
+              <span
+                className="shrink-0 w-24 text-xs text-right"
+                style={{ color: 'var(--color-text-disabled)' }}
+              >
+                {b.name}
+              </span>
+              <div
+                className="h-8 w-32 rounded-lg"
+                style={{
+                  border: `var(${b.variable}) solid var(--color-emphasis)`,
+                  backgroundColor: 'var(--color-surface-sunken)',
+                }}
+              />
+              <span className="text-xs font-medium" style={{ color: 'var(--color-text)' }}>
+                {b.value}
+              </span>
+              <span className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
+                {b.variable}
+              </span>
+              <span className="text-xs" style={{ color: 'var(--color-text-disabled)' }}>
+                {b.desc}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function TokensPage() {
   return (
     <div className="flex gap-12">
@@ -977,6 +1106,8 @@ export default function TokensPage() {
         <ShapeSection />
         <MotionSection />
         <ZindexSection />
+        <OpacitySection />
+        <BorderWidthSection />
       </div>
 
       <nav className="hidden xl:block w-40 shrink-0 sticky top-8 self-start">

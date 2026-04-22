@@ -86,7 +86,7 @@ export function Button({
       disabled={isDisabled}
       style={{
         ...variantStyles[variant ?? 'emphasis'],
-        ...(isDisabled ? { opacity: 0.4, cursor: 'not-allowed' } : {}),
+        ...(isDisabled ? { opacity: 'var(--opacity-disabled)', cursor: 'not-allowed' } : {}),
         transition: 'var(--token-transition-fast)',
         ...style,
       }}
