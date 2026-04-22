@@ -1,8 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import { Button } from '@/components/atoms/Button';
 import { ThemeSplit } from '@/components/ThemeSplit';
+import { AtomDocPage, DocSection } from '@/components/AtomDocPage';
 
 const variants = ['emphasis', 'primary', 'secondary', 'ghost', 'destructive'] as const;
 const sizes = ['sm', 'md', 'lg'] as const;
@@ -41,36 +41,16 @@ const tokens = [
   '--token-transition-fast',
 ];
 
-
 export default function ButtonPage() {
   return (
-    <div>
-      <div
-        className="flex items-center gap-2 text-sm"
-        style={{ color: 'var(--color-text-tertiary)' }}
-      >
-        <Link href="/docs/atoms" className="hover:opacity-75">
-          Atoms
-        </Link>
-        <span>/</span>
-        <span style={{ color: 'var(--color-text)' }}>Button</span>
-      </div>
-
-      <h1 className="mt-4 text-2xl font-bold" style={{ color: 'var(--color-emphasis)' }}>
-        Button
-      </h1>
-      <p className="mt-2" style={{ color: 'var(--color-text-secondary)' }}>
-        가장 기본적인 인터랙션 요소. 6 variants, 3 sizes, loading/disabled 상태.
-      </p>
-
+    <AtomDocPage
+      name="Button"
+      description="가장 기본적인 인터랙션 요소. 6 variants, 3 sizes, loading/disabled 상태."
+      props={props}
+      tokens={tokens}
+    >
       {/* Variant × Size Matrix */}
-      <section className="mt-8">
-        <h2
-          className="text-sm font-semibold uppercase tracking-widest"
-          style={{ color: 'var(--color-text-tertiary)' }}
-        >
-          Preview
-        </h2>
+      <DocSection title="Preview">
         <ThemeSplit cols={1}>
           <div className="overflow-x-auto">
             <table className="border-separate" style={{ borderSpacing: '12px 8px' }}>
@@ -152,16 +132,10 @@ export default function ButtonPage() {
             </table>
           </div>
         </ThemeSplit>
-      </section>
+      </DocSection>
 
       {/* States */}
-      <section className="mt-10">
-        <h2
-          className="text-sm font-semibold uppercase tracking-widest"
-          style={{ color: 'var(--color-text-tertiary)' }}
-        >
-          States
-        </h2>
+      <DocSection title="States">
         <ThemeSplit cols={1}>
           <div className="flex gap-4 flex-wrap">
             <div className="flex flex-col items-center gap-2">
@@ -184,113 +158,7 @@ export default function ButtonPage() {
             </div>
           </div>
         </ThemeSplit>
-      </section>
-
-      {/* Props */}
-      <section className="mt-10">
-        <h2
-          className="text-sm font-semibold uppercase tracking-widest"
-          style={{ color: 'var(--color-text-tertiary)' }}
-        >
-          Props
-        </h2>
-        <div
-          className="mt-3 overflow-hidden rounded-2xl"
-          style={{ border: '1px solid var(--color-border-subtle)' }}
-        >
-          <table className="w-full text-sm">
-            <thead>
-              <tr style={{ backgroundColor: 'var(--color-surface-sunken)' }}>
-                <th
-                  className="px-4 py-3 text-left font-semibold"
-                  style={{ color: 'var(--color-text)' }}
-                >
-                  Prop
-                </th>
-                <th
-                  className="px-4 py-3 text-left font-semibold"
-                  style={{ color: 'var(--color-text)' }}
-                >
-                  Type
-                </th>
-                <th
-                  className="px-4 py-3 text-left font-semibold"
-                  style={{ color: 'var(--color-text)' }}
-                >
-                  Default
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {props.map((p) => (
-                <tr key={p.name} style={{ borderTop: '1px solid var(--color-border-subtle)' }}>
-                  <td
-                    className="px-4 py-3 font-medium"
-                    style={{
-                      color: 'var(--color-text)',
-                      backgroundColor: 'var(--color-surface-raised)',
-                    }}
-                  >
-                    {p.name}
-                  </td>
-                  <td
-                    className="px-4 py-3"
-                    style={{
-                      color: 'var(--color-text-secondary)',
-                      backgroundColor: 'var(--color-surface-raised)',
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: 'var(--font-size-caption)',
-                    }}
-                  >
-                    {p.type}
-                  </td>
-                  <td
-                    className="px-4 py-3"
-                    style={{
-                      color: 'var(--color-text-tertiary)',
-                      backgroundColor: 'var(--color-surface-raised)',
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: 'var(--font-size-caption)',
-                    }}
-                  >
-                    {p.default}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      {/* Tokens Used */}
-      <section className="mt-10">
-        <h2
-          className="text-sm font-semibold uppercase tracking-widest"
-          style={{ color: 'var(--color-text-tertiary)' }}
-        >
-          Tokens Used
-        </h2>
-        <div
-          className="mt-3 flex flex-wrap gap-2 rounded-2xl p-6"
-          style={{
-            backgroundColor: 'var(--color-surface-raised)',
-            border: '1px solid var(--color-border-subtle)',
-          }}
-        >
-          {tokens.map((t) => (
-            <span
-              key={t}
-              className="rounded-lg px-3 py-1 text-xs font-medium"
-              style={{
-                backgroundColor: 'var(--color-surface-sunken)',
-                color: 'var(--color-text-secondary)',
-              }}
-            >
-              {t}
-            </span>
-          ))}
-        </div>
-      </section>
-    </div>
+      </DocSection>
+    </AtomDocPage>
   );
 }
