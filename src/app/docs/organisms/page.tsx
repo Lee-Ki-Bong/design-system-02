@@ -1,11 +1,12 @@
-export default function DocsHome() {
+export default function OrganismsPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold" style={{ color: 'var(--color-emphasis)' }}>
-        Documentation
+        Organisms
       </h1>
       <p className="mt-2" style={{ color: 'var(--color-text-secondary)' }}>
-        좌측 사이드바에서 계층을 선택하세요.
+        Form, DataTable, FilterBar, Sidebar, TopBar, Modal, Drawer, Popover, Tabs, CardGroup,
+        ToastContainer, EmptyState
       </p>
     </div>
   );

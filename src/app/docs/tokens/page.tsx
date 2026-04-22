@@ -1,11 +1,11 @@
-export default function DocsHome() {
+export default function TokensPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold" style={{ color: 'var(--color-emphasis)' }}>
-        Documentation
+        Design Tokens
       </h1>
       <p className="mt-2" style={{ color: 'var(--color-text-secondary)' }}>
-        좌측 사이드바에서 계층을 선택하세요.
+        Color, Typography, Spacing, Radius, Shadow, Motion
       </p>
     </div>
   );
