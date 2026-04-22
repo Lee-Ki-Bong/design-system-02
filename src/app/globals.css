@@ -50,6 +50,52 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ─── Button hover/active ─── */
+.btn-emphasis:hover {
+  background-color: var(--color-emphasis-hover) !important;
+  transform: translateY(-1px);
+}
+.btn-emphasis:active {
+  background-color: var(--color-emphasis-active) !important;
+  transform: translateY(0) scale(0.98);
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-hover) !important;
+  transform: translateY(-1px);
+}
+.btn-primary:active {
+  background-color: var(--color-primary-active) !important;
+  transform: translateY(0) scale(0.98);
+}
+.btn-secondary:hover {
+  background-color: var(--color-surface) !important;
+  transform: translateY(-1px);
+}
+.btn-secondary:active {
+  transform: translateY(0) scale(0.98);
+}
+.btn-ghost:hover {
+  background-color: var(--color-surface) !important;
+  transform: translateY(-1px);
+}
+.btn-ghost:active {
+  transform: translateY(0) scale(0.98);
+}
+.btn-destructive:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+.btn-destructive:active {
+  transform: translateY(0) scale(0.98);
+}
+.btn-icon:hover {
+  background-color: var(--color-surface) !important;
+  transform: translateY(-1px);
+}
+.btn-icon:active {
+  transform: translateY(0) scale(0.98);
+}
+
 @theme inline {
   --font-sans: 'Pretendard', -apple-system, system-ui, 'Noto Sans KR', sans-serif;
   --color-background: var(--color-bg);

@@ -1,10 +1,16 @@
+'use client';
+
 import Link from 'next/link';
+import { Button } from '@/components/atoms/Button';
+
+const variants = ['emphasis', 'primary', 'secondary', 'ghost', 'destructive'] as const;
+const sizes = ['sm', 'md', 'lg'] as const;
 
 const props = [
   {
     name: 'variant',
-    type: "'primary' | 'secondary' | 'ghost' | 'destructive'",
-    default: "'primary'",
+    type: "'emphasis' | 'primary' | 'secondary' | 'ghost' | 'destructive' | 'icon'",
+    default: "'emphasis'",
   },
   { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'" },
   { name: 'disabled', type: 'boolean', default: 'false' },
@@ -15,22 +21,60 @@ const props = [
 const tokens = [
   '--color-emphasis',
   '--color-emphasis-hover',
+  '--color-on-emphasis',
   '--color-primary',
   '--color-primary-hover',
-  '--color-on-emphasis',
   '--color-surface-raised',
-  '--color-border',
+  '--color-border-strong',
   '--color-text',
   '--color-text-disabled',
   '--color-destructive',
+  '--color-destructive-bg',
   '--radius-lg',
+  '--radius-xl',
   '--height-sm',
   '--height-md',
   '--height-lg',
-  '--pad-md',
-  '--pad-lg',
+  '--shadow-sm',
+  '--shadow-md',
   '--token-transition-fast',
 ];
+
+function ThemeSplit({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      className="mt-3 grid grid-cols-1 gap-0 overflow-hidden rounded-2xl"
+      style={{ border: '1px solid var(--color-border-subtle)' }}
+    >
+      <div
+        data-theme="light"
+        className="p-6"
+        style={{ backgroundColor: 'var(--color-surface-raised)' }}
+      >
+        <span
+          className="text-xs font-semibold uppercase tracking-widest mb-4 block"
+          style={{ color: 'var(--color-text-tertiary)' }}
+        >
+          Light
+        </span>
+        {children}
+      </div>
+      <div
+        data-theme="dark"
+        className="p-6"
+        style={{ backgroundColor: 'var(--color-surface-raised)' }}
+      >
+        <span
+          className="text-xs font-semibold uppercase tracking-widest mb-4 block"
+          style={{ color: 'var(--color-text-tertiary)' }}
+        >
+          Dark
+        </span>
+        {children}
+      </div>
+    </div>
+  );
+}
 
 export default function ButtonPage() {
   return (
@@ -53,7 +97,7 @@ export default function ButtonPage() {
         가장 기본적인 인터랙션 요소. 6 variants, 3 sizes, loading/disabled 상태.
       </p>
 
-      {/* Preview */}
+      {/* Variant × Size Matrix */}
       <section className="mt-8">
         <h2
           className="text-sm font-semibold uppercase tracking-widest"
@@ -61,219 +105,87 @@ export default function ButtonPage() {
         >
           Preview
         </h2>
-        <div
-          className="mt-3 grid grid-cols-2 gap-0 overflow-hidden rounded-2xl"
-          style={{ border: '1px solid var(--color-border-subtle)' }}
-        >
-          <div
-            data-theme="light"
-            className="p-6"
-            style={{ backgroundColor: 'var(--color-surface-raised)' }}
-          >
-            <span
-              className="text-xs font-semibold uppercase tracking-widest mb-4 block"
-              style={{ color: 'var(--color-text-tertiary)' }}
-            >
-              Light
-            </span>
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3">
-                <span className="w-12 text-xs" style={{ color: 'var(--color-text-disabled)' }}>
-                  sm
-                </span>
-                <div
-                  className="h-9 px-4 rounded-lg flex items-center text-xs font-medium"
-                  style={{
-                    backgroundColor: 'var(--color-emphasis)',
-                    color: 'var(--color-on-emphasis)',
-                  }}
-                >
-                  Primary
-                </div>
-                <div
-                  className="h-9 px-4 rounded-lg flex items-center text-xs font-medium"
-                  style={{
-                    backgroundColor: 'var(--color-surface-raised)',
-                    color: 'var(--color-text)',
-                    border: '1px solid var(--color-border)',
-                  }}
-                >
-                  Secondary
-                </div>
-                <div
-                  className="h-9 px-4 rounded-lg flex items-center text-xs font-medium"
-                  style={{ color: 'var(--color-text-secondary)' }}
-                >
-                  Ghost
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="w-12 text-xs" style={{ color: 'var(--color-text-disabled)' }}>
-                  md
-                </span>
-                <div
-                  className="h-11 px-5 rounded-xl flex items-center text-sm font-medium"
-                  style={{
-                    backgroundColor: 'var(--color-emphasis)',
-                    color: 'var(--color-on-emphasis)',
-                  }}
-                >
-                  Primary
-                </div>
-                <div
-                  className="h-11 px-5 rounded-xl flex items-center text-sm font-medium"
-                  style={{
-                    backgroundColor: 'var(--color-surface-raised)',
-                    color: 'var(--color-text)',
-                    border: '1px solid var(--color-border)',
-                  }}
-                >
-                  Secondary
-                </div>
-                <div
-                  className="h-11 px-5 rounded-xl flex items-center text-sm font-medium"
-                  style={{ color: 'var(--color-text-secondary)' }}
-                >
-                  Ghost
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="w-12 text-xs" style={{ color: 'var(--color-text-disabled)' }}>
-                  lg
-                </span>
-                <div
-                  className="h-13 px-6 rounded-xl flex items-center font-medium"
-                  style={{
-                    backgroundColor: 'var(--color-emphasis)',
-                    color: 'var(--color-on-emphasis)',
-                  }}
-                >
-                  Primary
-                </div>
-                <div
-                  className="h-13 px-6 rounded-xl flex items-center font-medium"
-                  style={{
-                    backgroundColor: 'var(--color-surface-raised)',
-                    color: 'var(--color-text)',
-                    border: '1px solid var(--color-border)',
-                  }}
-                >
-                  Secondary
-                </div>
-                <div
-                  className="h-13 px-6 rounded-xl flex items-center font-medium"
-                  style={{ color: 'var(--color-text-secondary)' }}
-                >
-                  Ghost
-                </div>
-              </div>
-            </div>
+        <ThemeSplit>
+          <div className="overflow-x-auto">
+            <table className="border-separate" style={{ borderSpacing: '12px 8px' }}>
+              <thead>
+                <tr>
+                  <th />
+                  {variants.map((v) => (
+                    <th
+                      key={v}
+                      className="text-xs font-medium text-left pb-1"
+                      style={{ color: 'var(--color-text-disabled)' }}
+                    >
+                      {v.charAt(0).toUpperCase() + v.slice(1)}
+                    </th>
+                  ))}
+                  <th
+                    className="text-xs font-medium text-left pb-1"
+                    style={{ color: 'var(--color-text-disabled)' }}
+                  >
+                    Icon+Text
+                  </th>
+                  <th
+                    className="text-xs font-medium text-left pb-1"
+                    style={{ color: 'var(--color-text-disabled)' }}
+                  >
+                    Icon
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {sizes.map((size) => (
+                  <tr key={size}>
+                    <td className="text-xs pr-2" style={{ color: 'var(--color-text-disabled)' }}>
+                      {size}
+                    </td>
+                    {variants.map((variant) => (
+                      <td key={variant}>
+                        <Button variant={variant} size={size}>
+                          Button
+                        </Button>
+                      </td>
+                    ))}
+                    <td>
+                      <Button variant="emphasis" size={size}>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M12 5v14M5 12h14" />
+                        </svg>
+                        Add
+                      </Button>
+                    </td>
+                    <td>
+                      <Button variant="icon" size={size} aria-label="Add">
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M12 5v14M5 12h14" />
+                        </svg>
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-          <div
-            data-theme="dark"
-            className="p-6"
-            style={{ backgroundColor: 'var(--color-surface-raised)' }}
-          >
-            <span
-              className="text-xs font-semibold uppercase tracking-widest mb-4 block"
-              style={{ color: 'var(--color-text-tertiary)' }}
-            >
-              Dark
-            </span>
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3">
-                <span className="w-12 text-xs" style={{ color: 'var(--color-text-disabled)' }}>
-                  sm
-                </span>
-                <div
-                  className="h-9 px-4 rounded-lg flex items-center text-xs font-medium"
-                  style={{
-                    backgroundColor: 'var(--color-emphasis)',
-                    color: 'var(--color-on-emphasis)',
-                  }}
-                >
-                  Primary
-                </div>
-                <div
-                  className="h-9 px-4 rounded-lg flex items-center text-xs font-medium"
-                  style={{
-                    backgroundColor: 'var(--color-surface-raised)',
-                    color: 'var(--color-text)',
-                    border: '1px solid var(--color-border)',
-                  }}
-                >
-                  Secondary
-                </div>
-                <div
-                  className="h-9 px-4 rounded-lg flex items-center text-xs font-medium"
-                  style={{ color: 'var(--color-text-secondary)' }}
-                >
-                  Ghost
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="w-12 text-xs" style={{ color: 'var(--color-text-disabled)' }}>
-                  md
-                </span>
-                <div
-                  className="h-11 px-5 rounded-xl flex items-center text-sm font-medium"
-                  style={{
-                    backgroundColor: 'var(--color-emphasis)',
-                    color: 'var(--color-on-emphasis)',
-                  }}
-                >
-                  Primary
-                </div>
-                <div
-                  className="h-11 px-5 rounded-xl flex items-center text-sm font-medium"
-                  style={{
-                    backgroundColor: 'var(--color-surface-raised)',
-                    color: 'var(--color-text)',
-                    border: '1px solid var(--color-border)',
-                  }}
-                >
-                  Secondary
-                </div>
-                <div
-                  className="h-11 px-5 rounded-xl flex items-center text-sm font-medium"
-                  style={{ color: 'var(--color-text-secondary)' }}
-                >
-                  Ghost
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="w-12 text-xs" style={{ color: 'var(--color-text-disabled)' }}>
-                  lg
-                </span>
-                <div
-                  className="h-13 px-6 rounded-xl flex items-center font-medium"
-                  style={{
-                    backgroundColor: 'var(--color-emphasis)',
-                    color: 'var(--color-on-emphasis)',
-                  }}
-                >
-                  Primary
-                </div>
-                <div
-                  className="h-13 px-6 rounded-xl flex items-center font-medium"
-                  style={{
-                    backgroundColor: 'var(--color-surface-raised)',
-                    color: 'var(--color-text)',
-                    border: '1px solid var(--color-border)',
-                  }}
-                >
-                  Secondary
-                </div>
-                <div
-                  className="h-13 px-6 rounded-xl flex items-center font-medium"
-                  style={{ color: 'var(--color-text-secondary)' }}
-                >
-                  Ghost
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </ThemeSplit>
       </section>
 
       {/* States */}
@@ -284,35 +196,28 @@ export default function ButtonPage() {
         >
           States
         </h2>
-        <div
-          className="mt-3 flex gap-4 rounded-2xl p-6"
-          style={{
-            backgroundColor: 'var(--color-surface-raised)',
-            border: '1px solid var(--color-border-subtle)',
-          }}
-        >
-          {['Default', 'Hover', 'Active', 'Disabled', 'Loading'].map((state) => (
-            <div key={state} className="flex flex-col items-center gap-2">
-              <div
-                className="h-11 px-5 rounded-xl flex items-center text-sm font-medium"
-                style={{
-                  backgroundColor:
-                    state === 'Disabled' ? 'var(--color-surface-sunken)' : 'var(--color-emphasis)',
-                  color:
-                    state === 'Disabled'
-                      ? 'var(--color-text-disabled)'
-                      : 'var(--color-on-emphasis)',
-                  opacity: state === 'Disabled' ? 0.6 : 1,
-                }}
-              >
-                {state === 'Loading' ? '...' : 'Button'}
-              </div>
+        <ThemeSplit>
+          <div className="flex gap-4 flex-wrap">
+            <div className="flex flex-col items-center gap-2">
+              <Button>Default</Button>
               <span className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
-                {state}
+                Default
               </span>
             </div>
-          ))}
-        </div>
+            <div className="flex flex-col items-center gap-2">
+              <Button disabled>Disabled</Button>
+              <span className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
+                Disabled
+              </span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <Button loading>Loading</Button>
+              <span className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
+                Loading
+              </span>
+            </div>
+          </div>
+        </ThemeSplit>
       </section>
 
       {/* Props */}
