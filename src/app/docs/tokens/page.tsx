@@ -943,34 +943,58 @@ function MotionSection() {
   );
 }
 
-function PlaceholderSection({
-  id,
-  title,
-  description,
-}: {
-  id: string;
-  title: string;
-  description: string;
-}) {
+const zindexScale = [
+  { name: 'base', variable: '--z-base', value: 0 },
+  { name: 'dropdown', variable: '--z-dropdown', value: 10 },
+  { name: 'sticky', variable: '--z-sticky', value: 20 },
+  { name: 'overlay', variable: '--z-overlay', value: 30 },
+  { name: 'modal', variable: '--z-modal', value: 40 },
+  { name: 'toast', variable: '--z-toast', value: 50 },
+];
+
+function ZindexSection() {
   return (
-    <section id={id}>
+    <section id="zindex">
       <h2 className="text-xl font-bold" style={{ color: 'var(--color-emphasis)' }}>
-        {title}
+        Z-index
       </h2>
       <p className="mt-1 text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
-        {description}
+        Layer Stack
       </p>
+
       <div
-        className="mt-4 rounded-2xl p-8"
+        className="mt-4 rounded-2xl p-6"
         style={{
           backgroundColor: 'var(--color-surface-raised)',
           border: '1px solid var(--color-border-subtle)',
-          minHeight: '200px',
         }}
       >
-        <span className="text-sm" style={{ color: 'var(--color-text-disabled)' }}>
-          {title} preview
-        </span>
+        <div className="relative h-72">
+          {zindexScale.map((z, i) => (
+            <div
+              key={z.variable}
+              className="absolute rounded-xl flex items-center px-4"
+              style={{
+                left: `${i * 20}px`,
+                bottom: `${i * 36}px`,
+                width: `${220 - i * 16}px`,
+                height: '48px',
+                backgroundColor:
+                  i === 0 ? 'var(--color-surface-sunken)' : 'var(--color-surface-raised)',
+                border: '1px solid var(--color-border)',
+                boxShadow: 'var(--shadow-md)',
+                zIndex: z.value,
+              }}
+            >
+              <span className="text-xs font-medium" style={{ color: 'var(--color-text)' }}>
+                {z.name}
+              </span>
+              <span className="ml-auto text-xs" style={{ color: 'var(--color-text-disabled)' }}>
+                {z.value}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -985,9 +1009,7 @@ export default function TokensPage() {
         <SpacingSection />
         <ShapeSection />
         <MotionSection />
-        {sections.slice(5).map((s) => (
-          <PlaceholderSection key={s.id} id={s.id} title={s.title} description={s.description} />
-        ))}
+        <ZindexSection />
       </div>
 
       <nav className="hidden xl:block w-40 shrink-0 sticky top-8 self-start">
