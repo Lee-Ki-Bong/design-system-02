@@ -752,6 +752,93 @@ function SpacingSection() {
   );
 }
 
+const radiusScale = [
+  { name: 'xs', variable: '--radius-xs', value: '6px' },
+  { name: 'sm', variable: '--radius-sm', value: '10px' },
+  { name: 'md', variable: '--radius-md', value: '14px' },
+  { name: 'lg', variable: '--radius-lg', value: '20px' },
+  { name: 'xl', variable: '--radius-xl', value: '28px' },
+  { name: '2xl', variable: '--radius-2xl', value: '32px' },
+  { name: '3xl', variable: '--radius-3xl', value: '40px' },
+  { name: 'full', variable: '--radius-full', value: '9999px' },
+];
+
+const shadowScale = [
+  { name: 'xs', variable: '--shadow-xs' },
+  { name: 'sm', variable: '--shadow-sm' },
+  { name: 'md', variable: '--shadow-md' },
+  { name: 'lg', variable: '--shadow-lg' },
+  { name: 'xl', variable: '--shadow-xl' },
+  { name: '2xl', variable: '--shadow-2xl' },
+];
+
+function ShapeSection() {
+  return (
+    <section id="shape">
+      <h2 className="text-xl font-bold" style={{ color: 'var(--color-emphasis)' }}>
+        Shape
+      </h2>
+      <p className="mt-1 text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
+        Radius, Shadow
+      </p>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Radius
+      </h3>
+      <div
+        className="mt-4 rounded-2xl p-6"
+        style={{
+          backgroundColor: 'var(--color-surface-raised)',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <div className="flex flex-wrap gap-6">
+          {radiusScale.map((r) => (
+            <div key={r.variable} className="flex flex-col items-center gap-2">
+              <div
+                className="h-16 w-16"
+                style={{
+                  borderRadius: `var(${r.variable})`,
+                  backgroundColor: 'var(--color-primary-subtle)',
+                  border: '2px solid var(--color-primary)',
+                }}
+              />
+              <span className="text-xs font-medium" style={{ color: 'var(--color-text)' }}>
+                {r.name}
+              </span>
+              <span className="text-xs" style={{ color: 'var(--color-text-disabled)' }}>
+                {r.value}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Shadow
+      </h3>
+      <ThemeSplit>
+        <div className="flex flex-wrap gap-6">
+          {shadowScale.map((s) => (
+            <div key={s.variable} className="flex flex-col items-center gap-2">
+              <div
+                className="h-16 w-16 rounded-xl"
+                style={{
+                  backgroundColor: 'var(--color-surface-raised)',
+                  boxShadow: `var(${s.variable})`,
+                }}
+              />
+              <span className="text-xs font-medium" style={{ color: 'var(--color-text)' }}>
+                {s.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </ThemeSplit>
+    </section>
+  );
+}
+
 function PlaceholderSection({
   id,
   title,
@@ -792,7 +879,8 @@ export default function TokensPage() {
         <ColorSection />
         <TypographySection />
         <SpacingSection />
-        {sections.slice(3).map((s) => (
+        <ShapeSection />
+        {sections.slice(4).map((s) => (
           <PlaceholderSection key={s.id} id={s.id} title={s.title} description={s.description} />
         ))}
       </div>
