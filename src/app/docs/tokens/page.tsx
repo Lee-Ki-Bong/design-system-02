@@ -509,6 +509,249 @@ function TypographySection() {
   );
 }
 
+const spaceScale = [
+  { name: '1', variable: '--space-1' },
+  { name: '2', variable: '--space-2' },
+  { name: '3', variable: '--space-3' },
+  { name: '4', variable: '--space-4' },
+  { name: '5', variable: '--space-5' },
+  { name: '6', variable: '--space-6' },
+  { name: '7', variable: '--space-7' },
+  { name: '8', variable: '--space-8' },
+  { name: '10', variable: '--space-10' },
+  { name: '12', variable: '--space-12' },
+  { name: '16', variable: '--space-16' },
+  { name: '20', variable: '--space-20' },
+  { name: '24', variable: '--space-24' },
+];
+
+const gapScale = [
+  { name: 'xs', variable: '--gap-xs', value: '4px' },
+  { name: 'sm', variable: '--gap-sm', value: '8px' },
+  { name: 'md', variable: '--gap-md', value: '12px' },
+  { name: 'lg', variable: '--gap-lg', value: '16px' },
+  { name: 'xl', variable: '--gap-xl', value: '20px' },
+  { name: '2xl', variable: '--gap-2xl', value: '24px' },
+  { name: '3xl', variable: '--gap-3xl', value: '32px' },
+];
+
+const padScale = [
+  { name: 'xs', variable: '--pad-xs', value: '6px' },
+  { name: 'sm', variable: '--pad-sm', value: '10px' },
+  { name: 'md', variable: '--pad-md', value: '14px' },
+  { name: 'lg', variable: '--pad-lg', value: '18px' },
+  { name: 'xl', variable: '--pad-xl', value: '22px' },
+  { name: '2xl', variable: '--pad-2xl', value: '28px' },
+  { name: '3xl', variable: '--pad-3xl', value: '40px' },
+];
+
+const heightScale = [
+  { name: 'xs', variable: '--height-xs', value: '28px', desc: 'small badge, icon button' },
+  { name: 'sm', variable: '--height-sm', value: '36px', desc: 'small button' },
+  { name: 'md', variable: '--height-md', value: '44px', desc: 'default button, nav item' },
+  { name: 'lg', variable: '--height-lg', value: '48px', desc: 'input, select' },
+  { name: 'xl', variable: '--height-xl', value: '52px', desc: 'large button' },
+];
+
+function SpacingSection() {
+  return (
+    <section id="spacing">
+      <h2 className="text-xl font-bold" style={{ color: 'var(--color-emphasis)' }}>
+        Spacing & Sizing
+      </h2>
+      <p className="mt-1 text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
+        Space Scale, Gap, Padding, Component Height, Layout
+      </p>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Space Scale
+      </h3>
+      <div
+        className="mt-4 rounded-2xl p-6"
+        style={{
+          backgroundColor: 'var(--color-surface-raised)',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <div className="flex flex-col gap-2">
+          {spaceScale.map((s) => (
+            <div key={s.variable} className="flex items-center gap-4">
+              <span
+                className="shrink-0 w-12 text-xs text-right"
+                style={{ color: 'var(--color-text-disabled)' }}
+              >
+                {s.name}
+              </span>
+              <div
+                className="h-3 rounded-sm"
+                style={{
+                  width: `var(${s.variable})`,
+                  backgroundColor: 'var(--color-primary)',
+                  minWidth: '2px',
+                }}
+              />
+              <span className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
+                {s.variable}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Gap
+      </h3>
+      <div
+        className="mt-4 rounded-2xl p-6"
+        style={{
+          backgroundColor: 'var(--color-surface-raised)',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <div className="flex flex-col gap-2">
+          {gapScale.map((g) => (
+            <div key={g.variable} className="flex items-center gap-4">
+              <span
+                className="shrink-0 w-12 text-xs text-right"
+                style={{ color: 'var(--color-text-disabled)' }}
+              >
+                {g.name}
+              </span>
+              <div className="flex" style={{ gap: `var(${g.variable})` }}>
+                <div
+                  className="h-6 w-6 rounded-sm"
+                  style={{ backgroundColor: 'var(--color-primary-subtle)' }}
+                />
+                <div
+                  className="h-6 w-6 rounded-sm"
+                  style={{ backgroundColor: 'var(--color-primary-subtle)' }}
+                />
+                <div
+                  className="h-6 w-6 rounded-sm"
+                  style={{ backgroundColor: 'var(--color-primary-subtle)' }}
+                />
+              </div>
+              <span className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
+                {g.value}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Padding
+      </h3>
+      <div
+        className="mt-4 rounded-2xl p-6"
+        style={{
+          backgroundColor: 'var(--color-surface-raised)',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <div className="flex flex-wrap gap-4">
+          {padScale.map((p) => (
+            <div key={p.variable} className="flex flex-col items-center gap-2">
+              <div
+                className="rounded-lg"
+                style={{
+                  padding: `var(${p.variable})`,
+                  backgroundColor: 'var(--color-primary-subtle)',
+                }}
+              >
+                <div
+                  className="h-4 w-4 rounded-sm"
+                  style={{ backgroundColor: 'var(--color-primary)' }}
+                />
+              </div>
+              <span className="text-xs font-medium" style={{ color: 'var(--color-text)' }}>
+                {p.name}
+              </span>
+              <span className="text-xs" style={{ color: 'var(--color-text-disabled)' }}>
+                {p.value}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Component Height
+      </h3>
+      <div
+        className="mt-4 rounded-2xl p-6"
+        style={{
+          backgroundColor: 'var(--color-surface-raised)',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <div className="flex flex-col gap-3">
+          {heightScale.map((h) => (
+            <div key={h.variable} className="flex items-center gap-4">
+              <span
+                className="shrink-0 w-12 text-xs text-right"
+                style={{ color: 'var(--color-text-disabled)' }}
+              >
+                {h.name}
+              </span>
+              <div
+                className="rounded-lg flex items-center px-4"
+                style={{
+                  height: `var(${h.variable})`,
+                  backgroundColor: 'var(--color-surface-sunken)',
+                  border: '1px solid var(--color-border-subtle)',
+                }}
+              >
+                <span className="text-xs" style={{ color: 'var(--color-text-secondary)' }}>
+                  {h.value} — {h.desc}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Layout
+      </h3>
+      <div
+        className="mt-4 rounded-2xl p-6"
+        style={{
+          backgroundColor: 'var(--color-surface-raised)',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center gap-4">
+            <span className="shrink-0 w-28 text-xs" style={{ color: 'var(--color-text-disabled)' }}>
+              --container-max
+            </span>
+            <span className="text-sm" style={{ color: 'var(--color-text)' }}>
+              1240px
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="shrink-0 w-28 text-xs" style={{ color: 'var(--color-text-disabled)' }}>
+              --gutter
+            </span>
+            <span className="text-sm" style={{ color: 'var(--color-text)' }}>
+              40px (반응형: 16~40px)
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="shrink-0 w-28 text-xs" style={{ color: 'var(--color-text-disabled)' }}>
+              --grid-columns
+            </span>
+            <span className="text-sm" style={{ color: 'var(--color-text)' }}>
+              12
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function PlaceholderSection({
   id,
   title,
@@ -548,7 +791,8 @@ export default function TokensPage() {
       <div className="flex-1 flex flex-col gap-16">
         <ColorSection />
         <TypographySection />
-        {sections.slice(2).map((s) => (
+        <SpacingSection />
+        {sections.slice(3).map((s) => (
           <PlaceholderSection key={s.id} id={s.id} title={s.title} description={s.description} />
         ))}
       </div>
