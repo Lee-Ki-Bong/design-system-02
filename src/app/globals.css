@@ -47,12 +47,6 @@
 
 @theme inline {
   --font-sans: 'Pretendard', -apple-system, system-ui, 'Noto Sans KR', sans-serif;
-  --color-background: var(--color-surface-l1);
+  --color-background: var(--color-bg);
   --color-foreground: var(--color-text);
-}
-
-body {
-  background: var(--color-background);
-  color: var(--color-foreground);
-  font-family: var(--font-sans);
 }
