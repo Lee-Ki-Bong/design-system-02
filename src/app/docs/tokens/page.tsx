@@ -1,3 +1,5 @@
+'use client';
+
 const sections = [
   {
     id: 'color',
@@ -839,6 +841,108 @@ function ShapeSection() {
   );
 }
 
+function MotionSection() {
+  return (
+    <section id="motion">
+      <h2 className="text-xl font-bold" style={{ color: 'var(--color-emphasis)' }}>
+        Motion
+      </h2>
+      <p className="mt-1 text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
+        Transition Duration, Easing, Keyframes
+      </p>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Transition
+      </h3>
+      <div
+        className="mt-4 rounded-2xl p-6"
+        style={{
+          backgroundColor: 'var(--color-surface-raised)',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <p className="text-xs mb-4" style={{ color: 'var(--color-text-tertiary)' }}>
+          Easing: cubic-bezier(0.2, 0, 0, 1) — 호버하면 transition 확인
+        </p>
+        <div className="flex flex-col gap-4">
+          {[
+            { name: 'Fast', variable: '--token-transition-fast', value: '150ms' },
+            { name: 'Default', variable: '--token-transition', value: '220ms' },
+            { name: 'Slow', variable: '--token-transition-slow', value: '360ms' },
+          ].map((t) => (
+            <div key={t.variable} className="flex items-center gap-4">
+              <span
+                className="shrink-0 w-16 text-xs"
+                style={{ color: 'var(--color-text-disabled)' }}
+              >
+                {t.name}
+              </span>
+              <div
+                className="h-10 w-10 rounded-lg cursor-pointer"
+                style={{
+                  backgroundColor: 'var(--color-primary)',
+                  transition: `var(${t.variable})`,
+                }}
+                onMouseEnter={(e) => {
+                  (e.target as HTMLElement).style.transform = 'scale(1.3)';
+                  (e.target as HTMLElement).style.backgroundColor = 'var(--color-emphasis)';
+                }}
+                onMouseLeave={(e) => {
+                  (e.target as HTMLElement).style.transform = 'scale(1)';
+                  (e.target as HTMLElement).style.backgroundColor = 'var(--color-primary)';
+                }}
+              />
+              <span className="text-xs" style={{ color: 'var(--color-text-tertiary)' }}>
+                {t.value} — {t.variable}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Keyframes
+      </h3>
+      <div
+        className="mt-4 rounded-2xl p-6"
+        style={{
+          backgroundColor: 'var(--color-surface-raised)',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <p className="text-xs mb-4" style={{ color: 'var(--color-text-tertiary)' }}>
+          클릭하면 애니메이션 재생
+        </p>
+        <div className="flex flex-wrap gap-6">
+          {[
+            { name: 'fadeIn', animation: 'fadeIn 0.5s ease' },
+            { name: 'fadeInUp', animation: 'fadeInUp 0.5s ease' },
+            { name: 'fadeInScale', animation: 'fadeInScale 0.5s ease' },
+            { name: 'spin', animation: 'spin 1s linear infinite' },
+            { name: 'pulse', animation: 'pulse 2s ease-in-out infinite' },
+          ].map((k) => (
+            <div key={k.name} className="flex flex-col items-center gap-2">
+              <div
+                className="h-12 w-12 rounded-lg cursor-pointer"
+                style={{ backgroundColor: 'var(--color-primary)' }}
+                onClick={(e) => {
+                  const el = e.target as HTMLElement;
+                  el.style.animation = 'none';
+                  void el.offsetHeight;
+                  el.style.animation = k.animation;
+                }}
+              />
+              <span className="text-xs font-medium" style={{ color: 'var(--color-text)' }}>
+                {k.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function PlaceholderSection({
   id,
   title,
@@ -880,7 +984,8 @@ export default function TokensPage() {
         <TypographySection />
         <SpacingSection />
         <ShapeSection />
-        {sections.slice(4).map((s) => (
+        <MotionSection />
+        {sections.slice(5).map((s) => (
           <PlaceholderSection key={s.id} id={s.id} title={s.title} description={s.description} />
         ))}
       </div>
