@@ -313,6 +313,202 @@ function ColorSection() {
   );
 }
 
+const typeScale = [
+  { name: 'Display', variable: '--font-size-display', sample: '디자인 시스템' },
+  { name: 'H1', variable: '--font-size-h1', sample: '페이지 제목' },
+  { name: 'H2', variable: '--font-size-h2', sample: '섹션 제목' },
+  { name: 'H3', variable: '--font-size-h3', sample: '소제목 Heading' },
+  { name: 'Body LG', variable: '--font-size-body-lg', sample: '본문 큰 텍스트 Large body text' },
+  { name: 'Body', variable: '--font-size-body', sample: '기본 본문 텍스트 Default body text' },
+  { name: 'Body SM', variable: '--font-size-body-sm', sample: '작은 본문 메타 정보 Small meta' },
+  { name: 'Caption', variable: '--font-size-caption', sample: '캡션 텍스트 Caption text' },
+  { name: 'Overline', variable: '--font-size-overline', sample: 'OVERLINE LABEL 오버라인' },
+];
+
+const fontWeights = [
+  { name: 'Light', variable: '--font-weight-light', value: 300 },
+  { name: 'Regular', variable: '--font-weight-regular', value: 400 },
+  { name: 'Medium', variable: '--font-weight-medium', value: 500 },
+  { name: 'SemiBold', variable: '--font-weight-semibold', value: 600 },
+  { name: 'Bold', variable: '--font-weight-bold', value: 700 },
+];
+
+const lineHeights = [
+  { name: 'Tight', variable: '--line-height-tight', desc: '1.15 — Display, Heading' },
+  { name: 'Snug', variable: '--line-height-snug', desc: '1.3 — H2, H3, Caption' },
+  { name: 'Body', variable: '--line-height-body', desc: '1.55 — 본문' },
+  { name: 'Loose', variable: '--line-height-loose', desc: '1.7 — 여유 있는 본문' },
+];
+
+function TypographySection() {
+  return (
+    <section id="typography">
+      <h2 className="text-xl font-bold" style={{ color: 'var(--color-emphasis)' }}>
+        Typography
+      </h2>
+      <p className="mt-1 text-sm" style={{ color: 'var(--color-text-tertiary)' }}>
+        Font Family, Scale, Weight, Line Height, Letter Spacing
+      </p>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Font Family
+      </h3>
+      <ThemeSplit>
+        <div className="flex flex-col gap-4">
+          <div>
+            <span
+              className="text-xs uppercase tracking-widest"
+              style={{ color: 'var(--color-text-tertiary)' }}
+            >
+              Sans
+            </span>
+            <p
+              className="mt-1"
+              style={{ fontFamily: 'var(--font-sans)', color: 'var(--color-text)' }}
+            >
+              Pretendard 프리텐다드 0123456789
+            </p>
+          </div>
+          <div>
+            <span
+              className="text-xs uppercase tracking-widest"
+              style={{ color: 'var(--color-text-tertiary)' }}
+            >
+              Mono
+            </span>
+            <p
+              className="mt-1"
+              style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-text)' }}
+            >
+              monospace 코드 0123456789
+            </p>
+          </div>
+        </div>
+      </ThemeSplit>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Type Scale
+      </h3>
+      <ThemeSplit>
+        <div className="flex flex-col gap-4">
+          {typeScale.map((t) => (
+            <div key={t.variable} className="flex items-baseline gap-4">
+              <span
+                className="shrink-0 w-20 text-xs"
+                style={{ color: 'var(--color-text-disabled)' }}
+              >
+                {t.name}
+              </span>
+              <span
+                style={{
+                  fontSize: `var(${t.variable})`,
+                  color: 'var(--color-text)',
+                  lineHeight: 1.3,
+                }}
+              >
+                {t.sample}
+              </span>
+            </div>
+          ))}
+        </div>
+      </ThemeSplit>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Font Weight
+      </h3>
+      <ThemeSplit>
+        <div className="flex flex-col gap-3">
+          {fontWeights.map((w) => (
+            <div key={w.variable} className="flex items-baseline gap-4">
+              <span
+                className="shrink-0 w-20 text-xs"
+                style={{ color: 'var(--color-text-disabled)' }}
+              >
+                {w.value}
+              </span>
+              <span
+                style={{
+                  fontWeight: w.value,
+                  color: 'var(--color-text)',
+                  fontSize: 'var(--font-size-body-lg)',
+                }}
+              >
+                {w.name} — 다람쥐 헌 쳇바퀴에 타고파
+              </span>
+            </div>
+          ))}
+        </div>
+      </ThemeSplit>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Line Height
+      </h3>
+      <ThemeSplit>
+        <div className="flex flex-col gap-6">
+          {lineHeights.map((lh) => (
+            <div key={lh.variable}>
+              <span className="text-xs" style={{ color: 'var(--color-text-disabled)' }}>
+                {lh.name} — {lh.desc}
+              </span>
+              <p
+                className="mt-1 text-sm max-w-xs"
+                style={{
+                  color: 'var(--color-text)',
+                  lineHeight: `var(${lh.variable})`,
+                  backgroundColor: 'var(--color-surface-sunken)',
+                  padding: 'var(--pad-sm)',
+                  borderRadius: 'var(--radius-sm)',
+                }}
+              >
+                디자인 시스템은 일관된 UI를 만들기 위한 토큰과 컴포넌트의 집합입니다. Design systems
+                provide consistent UI.
+              </p>
+            </div>
+          ))}
+        </div>
+      </ThemeSplit>
+
+      <h3 className="mt-8 text-sm font-semibold" style={{ color: 'var(--color-text-secondary)' }}>
+        Letter Spacing
+      </h3>
+      <ThemeSplit>
+        <div className="flex flex-col gap-3">
+          <div>
+            <span className="text-xs" style={{ color: 'var(--color-text-disabled)' }}>
+              Display/Heading — -0.025em ~ -0.01em (tight)
+            </span>
+            <p
+              className="mt-1 text-xl font-bold"
+              style={{ color: 'var(--color-text)', letterSpacing: '-0.025em' }}
+            >
+              타이트한 제목 Tight Heading
+            </p>
+          </div>
+          <div>
+            <span className="text-xs" style={{ color: 'var(--color-text-disabled)' }}>
+              Body — 0 (normal)
+            </span>
+            <p className="mt-1 text-sm" style={{ color: 'var(--color-text)', letterSpacing: '0' }}>
+              기본 본문 텍스트 Normal body text
+            </p>
+          </div>
+          <div>
+            <span className="text-xs" style={{ color: 'var(--color-text-disabled)' }}>
+              Overline — 0.14em (wide)
+            </span>
+            <p
+              className="mt-1 text-xs font-semibold uppercase"
+              style={{ color: 'var(--color-text)', letterSpacing: '0.14em' }}
+            >
+              Wide Overline Label
+            </p>
+          </div>
+        </div>
+      </ThemeSplit>
+    </section>
+  );
+}
+
 function PlaceholderSection({
   id,
   title,
@@ -351,7 +547,8 @@ export default function TokensPage() {
     <div className="flex gap-12">
       <div className="flex-1 flex flex-col gap-16">
         <ColorSection />
-        {sections.slice(1).map((s) => (
+        <TypographySection />
+        {sections.slice(2).map((s) => (
           <PlaceholderSection key={s.id} id={s.id} title={s.title} description={s.description} />
         ))}
       </div>
