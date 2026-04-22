@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/atoms/Button';
+import { ThemeSplit } from '@/components/ThemeSplit';
 
 const variants = ['emphasis', 'primary', 'secondary', 'ghost', 'destructive'] as const;
 const sizes = ['sm', 'md', 'lg'] as const;
@@ -40,41 +41,6 @@ const tokens = [
   '--token-transition-fast',
 ];
 
-function ThemeSplit({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      className="mt-3 grid grid-cols-1 gap-0 overflow-hidden rounded-2xl"
-      style={{ border: '1px solid var(--color-border-subtle)' }}
-    >
-      <div
-        data-theme="light"
-        className="p-6"
-        style={{ backgroundColor: 'var(--color-surface-raised)' }}
-      >
-        <span
-          className="text-xs font-semibold uppercase tracking-widest mb-4 block"
-          style={{ color: 'var(--color-text-tertiary)' }}
-        >
-          Light
-        </span>
-        {children}
-      </div>
-      <div
-        data-theme="dark"
-        className="p-6"
-        style={{ backgroundColor: 'var(--color-surface-raised)' }}
-      >
-        <span
-          className="text-xs font-semibold uppercase tracking-widest mb-4 block"
-          style={{ color: 'var(--color-text-tertiary)' }}
-        >
-          Dark
-        </span>
-        {children}
-      </div>
-    </div>
-  );
-}
 
 export default function ButtonPage() {
   return (
@@ -105,7 +71,7 @@ export default function ButtonPage() {
         >
           Preview
         </h2>
-        <ThemeSplit>
+        <ThemeSplit cols={1}>
           <div className="overflow-x-auto">
             <table className="border-separate" style={{ borderSpacing: '12px 8px' }}>
               <thead>
@@ -196,7 +162,7 @@ export default function ButtonPage() {
         >
           States
         </h2>
-        <ThemeSplit>
+        <ThemeSplit cols={1}>
           <div className="flex gap-4 flex-wrap">
             <div className="flex flex-col items-center gap-2">
               <Button>Default</Button>

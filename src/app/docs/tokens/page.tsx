@@ -1,5 +1,7 @@
 'use client';
 
+import { ThemeSplit } from '@/components/ThemeSplit';
+
 const sections = [
   {
     id: 'color',
@@ -37,41 +39,6 @@ function ColorSwatch({ name, variable }: { name: string; variable: string }) {
   );
 }
 
-function ThemeSplit({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      className="mt-4 grid grid-cols-2 gap-0 overflow-hidden rounded-2xl"
-      style={{ border: '1px solid var(--color-border-subtle)' }}
-    >
-      <div
-        data-theme="light"
-        className="p-6"
-        style={{ backgroundColor: 'var(--color-surface-raised)' }}
-      >
-        <span
-          className="text-xs font-semibold uppercase tracking-widest mb-4 block"
-          style={{ color: 'var(--color-text-tertiary)' }}
-        >
-          Light
-        </span>
-        {children}
-      </div>
-      <div
-        data-theme="dark"
-        className="p-6"
-        style={{ backgroundColor: 'var(--color-surface-raised)' }}
-      >
-        <span
-          className="text-xs font-semibold uppercase tracking-widest mb-4 block"
-          style={{ color: 'var(--color-text-tertiary)' }}
-        >
-          Dark
-        </span>
-        {children}
-      </div>
-    </div>
-  );
-}
 
 function ColorSection() {
   return (
