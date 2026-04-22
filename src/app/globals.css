@@ -96,6 +96,40 @@ html {
   transform: translateY(0) scale(0.98);
 }
 
+/* ─── Checkbox ─── */
+.ds-checkbox input:checked + .ds-checkbox-box {
+  background-color: var(--color-emphasis);
+  border-color: var(--color-emphasis);
+}
+.ds-checkbox input:checked + .ds-checkbox-box .ds-checkbox-icon {
+  opacity: 1;
+}
+.ds-checkbox input:focus-visible + .ds-checkbox-box {
+  box-shadow: var(--ring);
+}
+
+/* ─── Radio ─── */
+.ds-radio input:checked + .ds-radio-box {
+  border-color: var(--color-emphasis);
+}
+.ds-radio input:checked + .ds-radio-box .ds-radio-dot {
+  background-color: var(--color-emphasis);
+}
+.ds-radio input:focus-visible + .ds-radio-box {
+  box-shadow: var(--ring);
+}
+
+/* ─── Switch ─── */
+.ds-switch input:checked + .ds-switch-track {
+  background-color: var(--color-emphasis);
+}
+.ds-switch input:checked + .ds-switch-track .ds-switch-thumb {
+  transform: translateX(var(--pad-xl));
+}
+.ds-switch input:focus-visible + .ds-switch-track {
+  box-shadow: var(--ring);
+}
+
 @theme inline {
   --font-sans: 'Pretendard', -apple-system, system-ui, 'Noto Sans KR', sans-serif;
   --color-background: var(--color-bg);
