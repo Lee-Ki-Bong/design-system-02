@@ -66,11 +66,11 @@
 
   /* ── TEXT ──
      4단계 위계. secondary=보조 설명, tertiary=라벨/캡션, disabled=비활성. */
-  --color-text: #0d0d0f;            /* 본문, 제목 */
-  --color-text-secondary: #555558;  /* 보조 설명, 부제 */
-  --color-text-tertiary: #88888c;   /* 라벨, 캡션, 힌트 */
-  --color-text-disabled: #b4b4b8;   /* 비활성 텍스트 */
-  --color-text-on-accent: #ffffff;  /* 컬러 배경 위 텍스트 */
+  --color-text: #0d0d0f; /* 본문, 제목 */
+  --color-text-secondary: #555558; /* 보조 설명, 부제 */
+  --color-text-tertiary: #88888c; /* 라벨, 캡션, 힌트 */
+  --color-text-disabled: #b4b4b8; /* 비활성 텍스트 */
+  --color-text-on-accent: #ffffff; /* 컬러 배경 위 텍스트 */
 
   /* ── STATUS (richer, slightly muted — match comp chips) ── */
   --color-success: #2e8b4e; /* navexa green */
@@ -142,19 +142,19 @@
   /* ── SPACING ──
      4px 기반 스케일. 컴포넌트 내부 마진, 섹션 간격에 사용.
      gap/pad 토큰과 역할 구분: space=범용, gap=컴포넌트 간, pad=컴포넌트 내부. */
-  --space-1: 0.25rem;   /* 4px */
-  --space-2: 0.5rem;    /* 8px */
-  --space-3: 0.75rem;   /* 12px */
-  --space-4: 1rem;      /* 16px */
-  --space-5: 1.25rem;   /* 20px */
-  --space-6: 1.5rem;    /* 24px */
-  --space-7: 1.75rem;   /* 28px */
-  --space-8: 2rem;      /* 32px */
-  --space-10: 2.5rem;   /* 40px */
-  --space-12: 3rem;     /* 48px */
-  --space-16: 4rem;     /* 64px */
-  --space-20: 5rem;     /* 80px */
-  --space-24: 6rem;     /* 96px */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-7: 1.75rem; /* 28px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+  --space-20: 5rem; /* 80px */
+  --space-24: 6rem; /* 96px */
 
   /* ── SHADOW (soft, wide, neutral-black) ──
      Comps use large blur + low alpha. No hard edges. */
@@ -174,67 +174,67 @@
 
   /* ── GAP ──
      컴포넌트 사이 간격. flex/grid gap, 카드 그리드 등에 사용. */
-  --gap-xs: 4px;    /* 아이콘-텍스트 */
-  --gap-sm: 8px;    /* 인라인 요소 간 */
-  --gap-md: 12px;   /* 폼 필드 간 */
-  --gap-lg: 16px;   /* 카드 그리드 */
-  --gap-xl: 20px;   /* 섹션 내 그룹 */
-  --gap-2xl: 24px;  /* 섹션 간 */
-  --gap-3xl: 32px;  /* 페이지 블록 간 */
+  --gap-xs: 4px; /* 아이콘-텍스트 */
+  --gap-sm: 8px; /* 인라인 요소 간 */
+  --gap-md: 12px; /* 폼 필드 간 */
+  --gap-lg: 16px; /* 카드 그리드 */
+  --gap-xl: 20px; /* 섹션 내 그룹 */
+  --gap-2xl: 24px; /* 섹션 간 */
+  --gap-3xl: 32px; /* 페이지 블록 간 */
 
   /* ── PADDING ──
      컴포넌트 내부 여백. 카드, 모달, 입력 필드 등에 사용. */
-  --pad-xs: 6px;    /* 뱃지, 칩 */
-  --pad-sm: 10px;   /* 버튼, 작은 카드 */
-  --pad-md: 14px;   /* 입력 필드 */
-  --pad-lg: 18px;   /* 카드 */
-  --pad-xl: 22px;   /* 모달 */
-  --pad-2xl: 28px;  /* 페이지 콘텐츠 영역 */
-  --pad-3xl: 40px;  /* 히어로 섹션 */
+  --pad-xs: 6px; /* 뱃지, 칩 */
+  --pad-sm: 10px; /* 버튼, 작은 카드 */
+  --pad-md: 14px; /* 입력 필드 */
+  --pad-lg: 18px; /* 카드 */
+  --pad-xl: 22px; /* 모달 */
+  --pad-2xl: 28px; /* 페이지 콘텐츠 영역 */
+  --pad-3xl: 40px; /* 히어로 섹션 */
 
   /* ── Z-INDEX ──
      레이어 스택. 10 단위로 간격을 두어 사이 삽입 여유 확보. */
-  --z-base: 0;        /* 기본 콘텐츠 */
-  --z-dropdown: 10;   /* 드롭다운, 팝오버 */
-  --z-sticky: 20;     /* 고정 헤더, sticky 요소 */
-  --z-overlay: 30;    /* 오버레이 배경 */
-  --z-modal: 40;      /* 모달, 다이얼로그 */
-  --z-toast: 50;      /* 토스트 알림 */
+  --z-base: 0; /* 기본 콘텐츠 */
+  --z-dropdown: 10; /* 드롭다운, 팝오버 */
+  --z-sticky: 20; /* 고정 헤더, sticky 요소 */
+  --z-overlay: 30; /* 오버레이 배경 */
+  --z-modal: 40; /* 모달, 다이얼로그 */
+  --z-toast: 50; /* 토스트 알림 */
 
   /* ── BORDER WIDTH ──
      두께 토큰. 색상은 --color-border-* 참조.
      신규 컴포넌트부터 적용, 기존 하드코딩은 점진 교체. */
-  --border-width-thin: 1px;  /* 기본 (카드, 구분선, 패널) */
+  --border-width-thin: 1px; /* 기본 (카드, 구분선, 패널) */
   --border-width-thick: 2px; /* 강조 (focus ring, active, spinner) */
 
   /* ── OPACITY ──
      의미 기반 불투명도. Tailwind 스케일(opacity-50 등)과 중복하지 않는다.
      용도가 명확하므로 값 변경 시 이름이 깨지지 않는다. */
-  --opacity-disabled: 0.4;      /* disabled 상태 (버튼, 인풋, 체크박스 등) */
-  --opacity-overlay: 0.6;       /* modal backdrop, drawer overlay */
-  --opacity-pressed: 0.65;      /* active/pressed 피드백 */
-  --opacity-hover: 0.75;        /* 일반 hover 피드백 */
+  --opacity-disabled: 0.4; /* disabled 상태 (버튼, 인풋, 체크박스 등) */
+  --opacity-overlay: 0.6; /* modal backdrop, drawer overlay */
+  --opacity-pressed: 0.65; /* active/pressed 피드백 */
+  --opacity-hover: 0.75; /* 일반 hover 피드백 */
   --opacity-hover-subtle: 0.85; /* emphasis 계열 hover (미세 피드백) */
 
   /* ── LAYOUT ──
      페이지 그리드 제약. 반응형 오버라이드는 @media 섹션 참조. */
   --container-max: 1240px; /* 콘텐츠 최대 너비 */
-  --gutter: 40px;          /* 좌우 여백 (반응형 축소) */
-  --grid-columns: 12;      /* 그리드 컬럼 수 */
+  --gutter: 40px; /* 좌우 여백 (반응형 축소) */
+  --grid-columns: 12; /* 그리드 컬럼 수 */
   /* Breakpoints (reference — CSS var()로 사용 불가, 문서용)
      --bp-sm: 640px; --bp-md: 768px; --bp-lg: 1024px; --bp-xl: 1280px; */
 
   /* ── SEMANTIC COLOR ──
      의미 기반 별칭. 원본 토큰을 참조하므로 테마 전환 시 자동 반영. */
-  --color-interactive: var(--color-primary);       /* 클릭 가능 요소 기본색 */
-  --color-destructive: var(--color-error);         /* 삭제, 위험 액션 */
-  --color-destructive-bg: var(--color-error-bg);   /* 위험 액션 배경 */
-  --color-on-surface: #ffffff;                     /* 컬러 배경 위 텍스트 (avatar, chip) */
+  --color-interactive: var(--color-primary); /* 클릭 가능 요소 기본색 */
+  --color-destructive: var(--color-error); /* 삭제, 위험 액션 */
+  --color-destructive-bg: var(--color-error-bg); /* 위험 액션 배경 */
+  --color-on-surface: #ffffff; /* 컬러 배경 위 텍스트 (avatar, chip) */
 
   /* ── FOCUS RING ──
      :focus-visible 시 box-shadow로 적용. 접근성 필수. */
-  --ring: 0 0 0 3px rgba(59, 111, 227, 0.25);          /* 기본 (primary 계열) */
-  --ring-emphasis: 0 0 0 3px rgba(13, 13, 15, 0.12);   /* emphasis 버튼 전용 */
+  --ring: 0 0 0 3px rgba(59, 111, 227, 0.25); /* 기본 (primary 계열) */
+  --ring-emphasis: 0 0 0 3px rgba(13, 13, 15, 0.12); /* emphasis 버튼 전용 */
 }
 
 /* =====================================================
@@ -248,9 +248,9 @@
   --color-surface: #1a1a1b;
   --color-surface-raised: #222223;
   --color-surface-sunken: #0f0f10;
-  --color-border: #2c2c2e;
-  --color-border-subtle: #222223;
-  --color-border-strong: #38383a;
+  --color-border: #363638;
+  --color-border-subtle: #2a2a2c;
+  --color-border-strong: #44444a;
 
   /* ── SURFACE LAYERS ── */
   --surface-l1: #131314;
@@ -504,6 +504,14 @@ pre,
   }
   50% {
     opacity: 0.5;
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
   }
 }
 
