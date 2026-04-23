@@ -5,7 +5,27 @@ import { usePathname } from 'next/navigation';
 
 const sections = [
   { label: 'Design Tokens', href: '/docs/tokens' },
-  { label: 'Atoms', href: '/docs/atoms' },
+  {
+    label: 'Atoms',
+    href: '/docs/atoms',
+    children: [
+      { label: 'Button', href: '/docs/atoms/button' },
+      { label: 'Input', href: '/docs/atoms/input' },
+      { label: 'Select', href: '/docs/atoms/select' },
+      { label: 'Textarea', href: '/docs/atoms/textarea' },
+      { label: 'Checkbox', href: '/docs/atoms/checkbox' },
+      { label: 'Radio', href: '/docs/atoms/radio' },
+      { label: 'Switch', href: '/docs/atoms/switch' },
+      { label: 'Badge', href: '/docs/atoms/badge' },
+      { label: 'Avatar', href: '/docs/atoms/avatar' },
+      { label: 'Icon', href: '/docs/atoms/icon' },
+      { label: 'Tooltip', href: '/docs/atoms/tooltip' },
+      { label: 'Spinner', href: '/docs/atoms/spinner' },
+      { label: 'Skeleton', href: '/docs/atoms/skeleton' },
+      { label: 'Progress', href: '/docs/atoms/progress' },
+      { label: 'Divider', href: '/docs/atoms/divider' },
+    ],
+  },
   { label: 'Molecules', href: '/docs/molecules' },
   { label: 'Organisms', href: '/docs/organisms' },
   { label: 'Templates', href: '/docs/templates' },
@@ -104,6 +124,38 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
           background: var(--color-border-subtle);
           margin: var(--pad-xs) var(--pad-sm);
         }
+        .sb-child {
+          padding: 6px var(--gap-md) 6px 28px;
+          border-radius: var(--radius-md);
+          font-size: var(--font-size-caption);
+          font-weight: var(--font-weight-medium);
+          color: var(--color-text-tertiary);
+          cursor: pointer;
+          transition: all 150ms;
+          text-decoration: none;
+          display: block;
+        }
+        .sb-child:hover {
+          color: var(--color-text-secondary);
+          background: var(--color-surface);
+        }
+        .sb-child.active {
+          color: var(--color-text);
+          font-weight: var(--font-weight-semibold);
+        }
+        .sb-children {
+          display: grid;
+          grid-template-rows: 0fr;
+          opacity: 0;
+          transition: grid-template-rows 250ms ease, opacity 200ms ease;
+        }
+        .sb-children.open {
+          grid-template-rows: 1fr;
+          opacity: 1;
+        }
+        .sb-children-inner {
+          overflow: hidden;
+        }
       `}</style>
 
       <nav className="sidebar">
@@ -116,10 +168,27 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
         {sections.map((s) => {
           const isActive = pathname.startsWith(s.href);
           return (
-            <Link key={s.href} href={s.href} className={`sb-item ${isActive ? 'active' : ''}`}>
-              <span className="dot" />
-              {s.label}
-            </Link>
+            <div key={s.href}>
+              <Link href={s.href} className={`sb-item ${isActive ? 'active' : ''}`}>
+                <span className="dot" />
+                {s.label}
+              </Link>
+              {s.children && (
+                <div className={`sb-children ${isActive ? 'open' : ''}`}>
+                  <div className="sb-children-inner">
+                    {s.children.map((c) => (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        className={`sb-child ${pathname === c.href ? 'active' : ''}`}
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           );
         })}
       </nav>
