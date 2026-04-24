@@ -40,6 +40,7 @@ const sections = [
       { label: 'Tabs', href: '/docs/molecules/tabs' },
       { label: 'NavItem', href: '/docs/molecules/nav-item' },
       { label: 'Popover', href: '/docs/molecules/popover' },
+      { label: 'DropdownMenu', href: '/docs/molecules/dropdown-menu' },
     ],
   },
   { label: 'Organisms', href: '/docs/organisms' },

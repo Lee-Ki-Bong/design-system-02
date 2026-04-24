@@ -71,14 +71,14 @@ function getPosition(
       pos.top + popover.height <= window.innerHeight - 4 &&
       pos.left + popover.width <= window.innerWidth - 4
     ) {
-      return { placement: p, top: pos.top + window.scrollY, left: pos.left + window.scrollX };
+      return { placement: p, top: pos.top, left: pos.left };
     }
   }
   const fallback = calcViewportPosition(trigger, popover, preferred);
   return {
     placement: preferred,
-    top: fallback.top + window.scrollY,
-    left: fallback.left + window.scrollX,
+    top: fallback.top,
+    left: fallback.left,
   };
 }
 
@@ -204,12 +204,13 @@ export function Popover({
             ref={popoverRef}
             role="dialog"
             style={{
-              position: 'absolute',
+              position: 'fixed',
               zIndex: 'var(--z-dropdown)' as unknown as number,
               top: pos?.top ?? -9999,
               left: pos?.left ?? -9999,
               width,
               padding: 'var(--pad-lg)',
+              color: 'var(--color-text)',
               background: 'var(--color-surface-raised)',
               borderRadius: 'var(--radius-xl)',
               boxShadow: 'var(--shadow-lg)',
@@ -229,7 +230,7 @@ export function Popover({
             />
             <div style={{ position: 'relative' }}>{content}</div>
           </div>,
-          document.body,
+          triggerRef.current?.closest('[data-theme]') ?? document.body,
         )}
     </div>
   );
