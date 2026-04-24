@@ -26,7 +26,21 @@ const sections = [
       { label: 'Divider', href: '/docs/atoms/divider' },
     ],
   },
-  { label: 'Molecules', href: '/docs/molecules' },
+  {
+    label: 'Molecules',
+    href: '/docs/molecules',
+    children: [
+      { label: 'Tag', href: '/docs/molecules/tag' },
+      { label: 'AvatarGroup', href: '/docs/molecules/avatar-group' },
+      { label: 'Stat', href: '/docs/molecules/stat' },
+      { label: 'Card', href: '/docs/molecules/card' },
+      { label: 'EmptyState', href: '/docs/molecules/empty-state' },
+      { label: 'Breadcrumb', href: '/docs/molecules/breadcrumb' },
+      { label: 'Pagination', href: '/docs/molecules/pagination' },
+      { label: 'Tabs', href: '/docs/molecules/tabs' },
+      { label: 'NavItem', href: '/docs/molecules/nav-item' },
+    ],
+  },
   { label: 'Organisms', href: '/docs/organisms' },
   { label: 'Templates', href: '/docs/templates' },
 ];
