@@ -56,8 +56,10 @@ export function Breadcrumb({ items, separator = '/', className, style }: Breadcr
               >
                 {item.label}
               </span>
+            ) : item.href ? (
+              <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
             ) : (
-              <BreadcrumbLink href={item.href ?? '#'}>{item.label}</BreadcrumbLink>
+              <BreadcrumbSpan>{item.label}</BreadcrumbSpan>
             )}
           </span>
         );
@@ -89,5 +91,18 @@ function BreadcrumbLink({ href, children }: { href: string; children: React.Reac
     >
       {children}
     </a>
+  );
+}
+
+function BreadcrumbSpan({ children }: { children: React.ReactNode }) {
+  return (
+    <span
+      style={{
+        color: 'var(--color-text-secondary)',
+        padding: '4px 8px',
+      }}
+    >
+      {children}
+    </span>
   );
 }

@@ -129,7 +129,7 @@ function InteractiveDemo() {
   ];
 
   return (
-    <div style={{ width: '220px', display: 'flex', flexDirection: 'column', gap: '2px' }}>
+    <SidebarPanel>
       {items.map((item) => (
         <NavItem
           key={item.id}
@@ -140,6 +140,40 @@ function InteractiveDemo() {
           onClick={() => setActive(item.id)}
         />
       ))}
+    </SidebarPanel>
+  );
+}
+
+function SidebarPanel({
+  children,
+  width = '220px',
+}: {
+  children: React.ReactNode;
+  width?: string;
+}) {
+  return (
+    <div
+      style={{
+        background: 'var(--color-surface-sunken)',
+        borderRadius: 'var(--radius-2xl)',
+        padding: 'var(--pad-lg)',
+        display: 'inline-block',
+      }}
+    >
+      <div
+        style={{
+          width,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '2px',
+          background: 'var(--color-surface-raised)',
+          borderRadius: 'var(--radius-xl)',
+          padding: 'var(--gap-sm)',
+          boxShadow: 'var(--shadow-md)',
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 }
@@ -156,45 +190,45 @@ export default function NavItemPage() {
     >
       <DocSection title="Preview">
         <ThemeSplit cols={1}>
-          <div style={{ width: '220px', display: 'flex', flexDirection: 'column', gap: '2px' }}>
+          <SidebarPanel>
             <NavItem icon={<HomeIcon />} label="홈" />
             <NavItem icon={<SearchIcon />} label="대시보드" active />
             <NavItem icon={<CalendarIcon />} label="일정" />
             <NavItem icon={<UserIcon />} label="멤버" />
-          </div>
+          </SidebarPanel>
         </ThemeSplit>
       </DocSection>
 
       <DocSection title="With Badge">
         <ThemeSplit cols={1}>
-          <div style={{ width: '220px', display: 'flex', flexDirection: 'column', gap: '2px' }}>
+          <SidebarPanel>
             <NavItem icon={<HomeIcon />} label="홈" />
             <NavItem icon={<SearchIcon />} label="알림" badge={5} />
             <NavItem icon={<UserIcon />} label="멤버" badge={23} active />
-          </div>
+          </SidebarPanel>
         </ThemeSplit>
       </DocSection>
 
       <DocSection title="With Depth">
         <ThemeSplit cols={1}>
-          <div style={{ width: '220px', display: 'flex', flexDirection: 'column', gap: '2px' }}>
+          <SidebarPanel width="240px">
             <NavItem icon={<HomeIcon />} label="Design System" active />
             <NavItem label="Foundations" depth={1} />
             <NavItem label="Colors" depth={2} active />
             <NavItem label="Typography" depth={2} />
             <NavItem label="Spacing" depth={2} />
             <NavItem label="Components" depth={1} />
-          </div>
+          </SidebarPanel>
         </ThemeSplit>
       </DocSection>
 
       <DocSection title="Without Icon">
         <ThemeSplit cols={1}>
-          <div style={{ width: '220px', display: 'flex', flexDirection: 'column', gap: '2px' }}>
+          <SidebarPanel>
             <NavItem label="프로젝트" />
             <NavItem label="팀" active />
             <NavItem label="설정" badge={2} />
-          </div>
+          </SidebarPanel>
         </ThemeSplit>
       </DocSection>
 
