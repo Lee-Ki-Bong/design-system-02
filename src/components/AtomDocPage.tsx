@@ -14,9 +14,19 @@ interface AtomDocPageProps {
   props: PropDef[];
   tokens: string[];
   children: React.ReactNode;
+  category?: string;
+  categoryHref?: string;
 }
 
-export function AtomDocPage({ name, description, props, tokens, children }: AtomDocPageProps) {
+export function AtomDocPage({
+  name,
+  description,
+  props,
+  tokens,
+  children,
+  category = 'Atoms',
+  categoryHref = '/docs/atoms',
+}: AtomDocPageProps) {
   return (
     <div>
       {/* Breadcrumb */}
@@ -24,8 +34,8 @@ export function AtomDocPage({ name, description, props, tokens, children }: Atom
         className="flex items-center gap-2 text-sm"
         style={{ color: 'var(--color-text-tertiary)' }}
       >
-        <Link href="/docs/atoms" className="hover:opacity-75">
-          Atoms
+        <Link href={categoryHref} className="hover:opacity-75">
+          {category}
         </Link>
         <span>/</span>
         <span style={{ color: 'var(--color-text)' }}>{name}</span>
@@ -151,13 +161,7 @@ export function AtomDocPage({ name, description, props, tokens, children }: Atom
   );
 }
 
-export function DocSection({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
+export function DocSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="mt-8">
       <h2
