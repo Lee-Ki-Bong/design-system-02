@@ -39,6 +39,7 @@ const sections = [
       { label: 'Pagination', href: '/docs/molecules/pagination' },
       { label: 'Tabs', href: '/docs/molecules/tabs' },
       { label: 'NavItem', href: '/docs/molecules/nav-item' },
+      { label: 'Popover', href: '/docs/molecules/popover' },
     ],
   },
   { label: 'Organisms', href: '/docs/organisms' },
