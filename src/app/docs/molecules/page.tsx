@@ -348,6 +348,111 @@ const molecules: {
       </div>
     ),
   },
+  {
+    name: 'Alert',
+    href: '/docs/molecules/alert',
+    desc: '인라인 / 배너 알림',
+    span: { col: 2 },
+    preview: (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '6px',
+          width: '100%',
+          maxWidth: 360,
+        }}
+      >
+        <div
+          className="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs"
+          style={{ background: 'var(--color-info-bg)', color: 'var(--color-text)' }}
+        >
+          <span style={{ color: 'var(--color-info)' }}>ℹ</span>
+          시스템 점검 예정
+        </div>
+        <div
+          className="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs"
+          style={{ background: 'var(--color-warning-bg)', color: 'var(--color-text)' }}
+        >
+          <span style={{ color: 'var(--color-warning)' }}>⚠</span>
+          체험 3일 남음
+        </div>
+        <div
+          className="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs"
+          style={{ background: 'var(--color-error-bg)', color: 'var(--color-text)' }}
+        >
+          <span style={{ color: 'var(--color-error)' }}>✕</span>
+          결제 실패
+        </div>
+      </div>
+    ),
+  },
+  {
+    name: 'Toast',
+    href: '/docs/molecules/toast',
+    desc: '자동 소멸 알림 스낵바',
+    preview: (
+      <div
+        className="flex items-start gap-2 rounded-xl px-3 py-2.5 text-xs"
+        style={{
+          background: 'var(--color-surface-raised)',
+          boxShadow: 'var(--shadow-lg)',
+          border: '1px solid var(--color-border-subtle)',
+          width: '100%',
+          maxWidth: 220,
+        }}
+      >
+        <div
+          className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
+          style={{ background: 'var(--color-success-bg)', color: 'var(--color-success)' }}
+        >
+          ✓
+        </div>
+        <div>
+          <div className="font-semibold" style={{ color: 'var(--color-text)' }}>
+            저장됨
+          </div>
+          <div style={{ color: 'var(--color-text-tertiary)' }}>동기화 완료</div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    name: 'Accordion',
+    href: '/docs/molecules/accordion',
+    desc: '접기/펼치기 패널',
+    preview: (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '4px',
+          width: '100%',
+          maxWidth: 220,
+        }}
+      >
+        <div
+          className="rounded-lg px-3 py-2 text-xs"
+          style={{ background: 'var(--color-surface-raised)', boxShadow: 'var(--shadow-sm)' }}
+        >
+          <div className="font-medium" style={{ color: 'var(--color-text)' }}>
+            결제 수단 변경 ▾
+          </div>
+          <div className="mt-1" style={{ color: 'var(--color-text-tertiary)', fontSize: '10px' }}>
+            설정 &gt; 결제 관리에서 변경
+          </div>
+        </div>
+        <div
+          className="rounded-lg px-3 py-2 text-xs"
+          style={{ background: 'var(--color-surface-raised)', boxShadow: 'var(--shadow-sm)' }}
+        >
+          <div className="font-medium" style={{ color: 'var(--color-text)' }}>
+            환불 정책 ▸
+          </div>
+        </div>
+      </div>
+    ),
+  },
 ];
 
 export default function MoleculesPage() {
