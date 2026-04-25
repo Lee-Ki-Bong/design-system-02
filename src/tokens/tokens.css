@@ -492,6 +492,22 @@ pre,
     transform: scale(1);
   }
 }
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
 @keyframes spin {
   to {
     transform: rotate(360deg);

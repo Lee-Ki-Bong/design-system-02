@@ -189,6 +189,104 @@ const molecules: {
     ),
   },
   {
+    name: 'Modal',
+    href: '/docs/molecules/modal',
+    desc: '집중형 오버레이 다이얼로그',
+    preview: (
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '200px',
+          background: 'var(--color-surface-raised)',
+          borderRadius: 'var(--radius-2xl)',
+          boxShadow: 'var(--shadow-2xl)',
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ padding: '12px 14px 6px' }}>
+          <div className="text-xs font-semibold" style={{ color: 'var(--color-text)' }}>
+            삭제할까요?
+          </div>
+          <div className="mt-1 text-[10px]" style={{ color: 'var(--color-text-tertiary)' }}>
+            되돌릴 수 없습니다
+          </div>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            gap: '4px',
+            padding: '6px 10px 10px',
+          }}
+        >
+          <div
+            className="rounded-md px-2 py-0.5 text-[10px]"
+            style={{ color: 'var(--color-text-secondary)' }}
+          >
+            취소
+          </div>
+          <div
+            className="rounded-md px-2 py-0.5 text-[10px]"
+            style={{ background: 'var(--color-error)', color: 'var(--color-on-surface)' }}
+          >
+            삭제
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    name: 'Drawer',
+    href: '/docs/molecules/drawer',
+    desc: '슬라이드 사이드 패널',
+    preview: (
+      <div
+        style={{
+          display: 'flex',
+          width: '100%',
+          height: '80px',
+          position: 'relative',
+          borderRadius: 'var(--radius-lg)',
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ flex: 1, background: 'var(--color-surface-sunken)', opacity: 0.5 }} />
+        <div
+          style={{
+            width: '55%',
+            background: 'var(--color-surface-raised)',
+            boxShadow: 'var(--shadow-2xl)',
+            padding: '8px 10px',
+            display: 'flex',
+            flexDirection: 'column',
+            borderLeft: '1px solid var(--color-border-subtle)',
+          }}
+        >
+          <div className="text-[10px] font-semibold" style={{ color: 'var(--color-text)' }}>
+            상세 정보
+          </div>
+          <div className="mt-1 text-[9px]" style={{ color: 'var(--color-text-tertiary)', flex: 1 }}>
+            콘텐츠 영역
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '3px' }}>
+            <div
+              className="rounded-full px-1.5 py-0.5 text-[8px]"
+              style={{ background: 'var(--color-surface)', color: 'var(--color-text-secondary)' }}
+            >
+              취소
+            </div>
+            <div
+              className="rounded-full px-1.5 py-0.5 text-[8px]"
+              style={{ background: 'var(--color-emphasis)', color: 'var(--color-on-emphasis)' }}
+            >
+              저장
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     name: 'Popover',
     href: '/docs/molecules/popover',
     desc: '클릭 오버레이 콘텐츠',
