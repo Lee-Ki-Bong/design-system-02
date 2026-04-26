@@ -47,6 +47,7 @@ const sections = [
       { label: 'Toast', href: '/docs/molecules/toast' },
       { label: 'Accordion', href: '/docs/molecules/accordion' },
       { label: 'SearchInput', href: '/docs/molecules/search-input' },
+      { label: 'FileUpload', href: '/docs/molecules/file-upload' },
     ],
   },
   { label: 'Organisms', href: '/docs/organisms' },
