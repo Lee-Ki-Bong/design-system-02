@@ -10,6 +10,8 @@ import { Pagination } from '@/components/molecules/Pagination';
 import { Tabs } from '@/components/molecules/Tabs';
 import { NavItem } from '@/components/molecules/NavItem';
 import { Badge } from '@/components/atoms/Badge';
+import { Avatar } from '@/components/atoms/Avatar';
+import { Icon } from '@/components/atoms/Icon';
 
 function NavIco({ d }: { d: string }) {
   return (
@@ -239,44 +241,82 @@ const molecules: {
     name: 'Drawer',
     href: '/docs/molecules/drawer',
     desc: '슬라이드 사이드 패널',
+    span: { col: 2 },
     preview: (
       <div
         style={{
           display: 'flex',
           width: '100%',
-          height: '80px',
-          position: 'relative',
+          height: '110px',
           borderRadius: 'var(--radius-lg)',
           overflow: 'hidden',
         }}
       >
-        <div style={{ flex: 1, background: 'var(--color-surface-sunken)', opacity: 0.5 }} />
+        {/* page content area - skeleton lines */}
         <div
           style={{
-            width: '55%',
+            flex: 1,
+            padding: '12px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '6px',
+          }}
+        >
+          <div
+            className="rounded"
+            style={{ width: '70%', height: 7, background: 'var(--color-border)' }}
+          />
+          <div
+            className="rounded"
+            style={{ width: '90%', height: 5, background: 'var(--color-border)', opacity: 0.5 }}
+          />
+          <div
+            className="rounded"
+            style={{ width: '50%', height: 5, background: 'var(--color-border)', opacity: 0.5 }}
+          />
+        </div>
+        {/* drawer panel from right */}
+        <div
+          style={{
+            width: '48%',
             background: 'var(--color-surface-raised)',
-            boxShadow: 'var(--shadow-2xl)',
-            padding: '8px 10px',
+            boxShadow: '-4px 0 16px rgba(0,0,0,0.08)',
+            padding: '10px 12px',
             display: 'flex',
             flexDirection: 'column',
             borderLeft: '1px solid var(--color-border-subtle)',
           }}
         >
-          <div className="text-[10px] font-semibold" style={{ color: 'var(--color-text)' }}>
-            상세 정보
+          <div className="flex items-center justify-between">
+            <div className="text-[11px] font-semibold" style={{ color: 'var(--color-text)' }}>
+              상세 정보
+            </div>
+            <span style={{ color: 'var(--color-text-tertiary)' }}>
+              <Icon name="x" size={12} />
+            </span>
           </div>
-          <div className="mt-1 text-[9px]" style={{ color: 'var(--color-text-tertiary)', flex: 1 }}>
-            콘텐츠 영역
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '3px' }}>
+          <div className="mt-2 flex flex-col gap-1.5" style={{ flex: 1 }}>
             <div
-              className="rounded-full px-1.5 py-0.5 text-[8px]"
-              style={{ background: 'var(--color-surface)', color: 'var(--color-text-secondary)' }}
+              className="rounded"
+              style={{ width: '80%', height: 5, background: 'var(--color-border)' }}
+            />
+            <div
+              className="rounded"
+              style={{ width: '60%', height: 5, background: 'var(--color-border)', opacity: 0.6 }}
+            />
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '4px' }}>
+            <div
+              className="rounded-md px-2 py-0.5 text-[9px] font-medium"
+              style={{
+                color: 'var(--color-text-secondary)',
+                border: '1px solid var(--color-border)',
+              }}
             >
               취소
             </div>
             <div
-              className="rounded-full px-1.5 py-0.5 text-[8px]"
+              className="rounded-md px-2 py-0.5 text-[9px] font-medium"
               style={{ background: 'var(--color-emphasis)', color: 'var(--color-on-emphasis)' }}
             >
               저장
@@ -314,36 +354,38 @@ const molecules: {
     desc: '액션 드롭다운 메뉴',
     span: { row: 2 },
     preview: (
-      <div
-        className="flex flex-col rounded-xl py-1.5 text-xs"
-        style={{
-          backgroundColor: 'var(--color-surface-raised)',
-          boxShadow: 'var(--shadow-md)',
-          width: '100%',
-        }}
-      >
+      <div className="flex flex-col items-start" style={{ width: '100%', maxWidth: 160 }}>
+        {/* trigger button */}
         <div
-          className="px-3 py-0.5 text-[10px] font-medium uppercase tracking-wider"
-          style={{ color: 'var(--color-text-tertiary)' }}
+          className="flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-medium"
+          style={{
+            background: 'var(--color-surface-raised)',
+            boxShadow: 'var(--shadow-sm)',
+            color: 'var(--color-text)',
+            border: '1px solid var(--color-border-subtle)',
+          }}
         >
-          Edit
+          Actions <span style={{ fontSize: 8, color: 'var(--color-text-tertiary)' }}>▾</span>
         </div>
-        <div className="px-3 py-1.5" style={{ color: 'var(--color-text)' }}>
-          수정
-        </div>
-        <div className="px-3 py-1.5" style={{ color: 'var(--color-text)' }}>
-          복제
-        </div>
-        <div style={{ height: 1, background: 'var(--color-border-subtle)', margin: '3px 0' }} />
-        <div className="px-3 py-1.5" style={{ color: 'var(--color-text)' }}>
-          다운로드
-        </div>
-        <div className="px-3 py-1.5" style={{ color: 'var(--color-text)' }}>
-          공유
-        </div>
-        <div style={{ height: 1, background: 'var(--color-border-subtle)', margin: '3px 0' }} />
-        <div className="px-3 py-1.5" style={{ color: 'var(--color-error)' }}>
-          삭제
+        {/* menu */}
+        <div
+          className="mt-1 flex w-full flex-col rounded-xl py-1 text-xs"
+          style={{
+            backgroundColor: 'var(--color-surface-raised)',
+            boxShadow: 'var(--shadow-lg)',
+            border: '1px solid var(--color-border-subtle)',
+          }}
+        >
+          <div className="px-3 py-1.5" style={{ color: 'var(--color-text)' }}>
+            수정
+          </div>
+          <div className="px-3 py-1.5" style={{ color: 'var(--color-text)' }}>
+            복제
+          </div>
+          <div style={{ height: 1, background: 'var(--color-border-subtle)', margin: '2px 8px' }} />
+          <div className="px-3 py-1.5" style={{ color: 'var(--color-error)' }}>
+            삭제
+          </div>
         </div>
       </div>
     ),
@@ -450,6 +492,104 @@ const molecules: {
             환불 정책 ▸
           </div>
         </div>
+      </div>
+    ),
+  },
+  {
+    name: 'SearchInput',
+    href: '/docs/molecules/search-input',
+    desc: '검색 전용 입력 필드',
+    preview: (
+      <div
+        className="flex w-full items-center rounded-full px-3 text-xs"
+        style={{
+          maxWidth: 200,
+          height: 36,
+          backgroundColor: 'var(--color-surface)',
+          border: '1px solid var(--color-border)',
+        }}
+      >
+        <span style={{ color: 'var(--color-text-tertiary)', marginRight: 6 }}>
+          <Icon name="search" size={14} />
+        </span>
+        <span style={{ color: 'var(--color-text-tertiary)' }}>Search...</span>
+      </div>
+    ),
+  },
+  {
+    name: 'FileUpload',
+    href: '/docs/molecules/file-upload',
+    desc: '드래그앤드롭 파일 업로드',
+    preview: (
+      <div
+        className="flex flex-col items-center gap-1.5 rounded-lg py-3 text-center"
+        style={{
+          width: '100%',
+          maxWidth: 200,
+          border: '2px dashed var(--color-border)',
+          backgroundColor: 'var(--color-surface)',
+        }}
+      >
+        <span style={{ color: 'var(--color-text-tertiary)' }}>
+          <Icon name="upload" size={18} />
+        </span>
+        <div className="text-[10px]" style={{ color: 'var(--color-text-tertiary)' }}>
+          파일을 드래그하거나 <span style={{ color: 'var(--color-primary)' }}>클릭</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    name: 'ListItem',
+    href: '/docs/molecules/list-item',
+    desc: 'Avatar + 텍스트 + Badge 리스트',
+    span: { col: 2 },
+    preview: (
+      <div
+        className="flex flex-col rounded-xl"
+        style={{
+          width: '100%',
+          maxWidth: 320,
+          border: '1px solid var(--color-border-subtle)',
+          overflow: 'hidden',
+        }}
+      >
+        {[
+          {
+            initials: 'JK',
+            color: 'var(--accent-blue)',
+            name: '김정현',
+            role: '프론트엔드',
+            time: '2분 전',
+          },
+          {
+            initials: 'LM',
+            color: 'var(--accent-rose)',
+            name: '이민수',
+            role: '백엔드',
+            time: '15분 전',
+          },
+        ].map((u) => (
+          <div key={u.initials} className="flex items-center gap-2 px-3 py-2">
+            <div
+              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold"
+              style={{ backgroundColor: u.color, color: 'var(--color-on-surface)' }}
+            >
+              {u.initials}
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-xs font-medium" style={{ color: 'var(--color-text)' }}>
+                {u.name}
+              </div>
+              <div className="text-[10px]" style={{ color: 'var(--color-text-tertiary)' }}>
+                {u.role}
+              </div>
+            </div>
+            <span className="text-[10px]" style={{ color: 'var(--color-text-tertiary)' }}>
+              {u.time}
+            </span>
+          </div>
+        ))}
       </div>
     ),
   },
