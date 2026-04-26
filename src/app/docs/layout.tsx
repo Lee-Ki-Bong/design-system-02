@@ -51,7 +51,19 @@ const sections = [
       { label: 'ListItem', href: '/docs/molecules/list-item' },
     ],
   },
-  { label: 'Organisms', href: '/docs/organisms' },
+  {
+    label: 'Organisms',
+    href: '/docs/organisms',
+    children: [
+      { label: 'DataTable', href: '/docs/organisms/data-table' },
+      { label: 'FilterBar', href: '/docs/organisms/filter-bar' },
+      { label: 'FormLayout', href: '/docs/organisms/form-layout' },
+      { label: 'ImageUpload', href: '/docs/organisms/image-upload' },
+      { label: 'Sidebar', href: '/docs/organisms/sidebar' },
+      { label: 'Header', href: '/docs/organisms/header' },
+      { label: 'Footer', href: '/docs/organisms/footer' },
+    ],
+  },
   { label: 'Templates', href: '/docs/templates' },
 ];
 
