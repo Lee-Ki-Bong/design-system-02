@@ -68,7 +68,7 @@ function ProfileContent() {
             height: 40,
             borderRadius: 'var(--radius-full)',
             background: 'var(--color-info)',
-            color: '#fff',
+            color: 'var(--color-on-emphasis)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
