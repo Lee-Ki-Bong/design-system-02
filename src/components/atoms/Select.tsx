@@ -57,6 +57,13 @@ export function Select({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const themeParent = containerRef.current.closest('[data-theme]') as HTMLElement | null;
+    setPortalTarget(themeParent ?? document.body);
+  }, []);
 
   const isControlled = controlledValue !== undefined;
   const selectedValue = isControlled ? controlledValue : internalValue;
@@ -94,8 +101,8 @@ export function Select({
     const spaceBelow = window.innerHeight - rect.bottom;
     const shouldDropUp = spaceBelow < 240 && rect.top > spaceBelow;
     setDropdownPos({
-      top: shouldDropUp ? rect.top + window.scrollY : rect.bottom + window.scrollY,
-      left: rect.left + window.scrollX,
+      top: shouldDropUp ? rect.top : rect.bottom,
+      left: rect.left,
       width: rect.width,
       dropUp: shouldDropUp,
     });
@@ -339,6 +346,7 @@ export function Select({
         {/* Dropdown (portal) */}
         {isOpen &&
           dropdownPos &&
+          portalTarget &&
           createPortal(
             <div
               ref={dropdownRef}
@@ -347,12 +355,12 @@ export function Select({
               aria-multiselectable={multiple || undefined}
               className="overflow-auto"
               style={{
-                position: 'absolute',
+                position: 'fixed',
                 zIndex: 9999,
                 left: dropdownPos.left,
                 width: dropdownPos.width,
                 ...(dropdownPos.dropUp
-                  ? { bottom: `calc(100vh - ${dropdownPos.top}px + 4px)` }
+                  ? { bottom: window.innerHeight - dropdownPos.top + 4 }
                   : { top: dropdownPos.top + 4 }),
                 maxHeight: '200px',
                 backgroundColor: 'var(--color-surface-raised)',
@@ -437,7 +445,7 @@ export function Select({
                 })
               )}
             </div>,
-            document.body,
+            portalTarget,
           )}
       </div>
 

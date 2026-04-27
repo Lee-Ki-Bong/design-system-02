@@ -593,6 +593,38 @@ const molecules: {
       </div>
     ),
   },
+  {
+    name: 'DatePicker',
+    href: '/docs/molecules/date-picker',
+    desc: '캘린더 팝업 날짜 선택',
+    preview: (
+      <div
+        className="flex w-full items-center rounded-xl text-xs"
+        style={{
+          maxWidth: 200,
+          height: 36,
+          padding: '0 32px 0 12px',
+          backgroundColor: 'var(--color-surface)',
+          border: '1px solid var(--color-border)',
+          color: 'var(--color-text-tertiary)',
+          position: 'relative',
+        }}
+      >
+        <span>2026-04-27</span>
+        <span
+          style={{
+            position: 'absolute',
+            right: 10,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            color: 'var(--color-text-tertiary)',
+          }}
+        >
+          <Icon name="calendar" size={14} />
+        </span>
+      </div>
+    ),
+  },
 ];
 
 export default function MoleculesPage() {
