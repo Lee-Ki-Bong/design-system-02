@@ -68,7 +68,16 @@ const sections: SidebarSection[] = [
           { label: 'Footer', href: '/docs/organisms/footer' },
         ],
       },
-      { label: 'Templates', href: '/docs/templates' },
+      {
+        label: 'Templates',
+        href: '/docs/templates',
+        children: [
+          { label: 'Dashboard', href: '/docs/templates/dashboard' },
+          { label: 'ListPage', href: '/docs/templates/list' },
+          { label: 'FormPage', href: '/docs/templates/form' },
+          { label: 'Auth', href: '/docs/templates/auth' },
+        ],
+      },
     ],
   },
 ];

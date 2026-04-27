@@ -82,7 +82,6 @@ export function Sidebar({
         .ds-sidebar {
           background: var(--color-surface-raised);
           padding: var(--gap-lg) var(--gap-md);
-          border-radius: 0 var(--radius-2xl) var(--radius-2xl) 0;
           box-shadow: var(--shadow-md);
           box-sizing: border-box;
           display: flex;
@@ -201,7 +200,7 @@ export function Sidebar({
 
       <nav
         className={cn('ds-sidebar', className)}
-        style={{ width, ...style }}
+        style={{ width, borderRadius: '0 var(--radius-2xl) var(--radius-2xl) 0', ...style }}
         aria-label="Sidebar navigation"
       >
         {brand && (
