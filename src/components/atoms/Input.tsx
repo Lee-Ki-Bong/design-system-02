@@ -57,9 +57,7 @@ export function Input({
             color: 'var(--color-text)',
             border: `var(--border-width-thin) solid ${hasError ? 'var(--color-error)' : 'var(--color-border)'}`,
             transition: 'var(--token-transition-fast)',
-            ...(disabled
-              ? { opacity: 'var(--opacity-disabled)', cursor: 'not-allowed' }
-              : {}),
+            ...(disabled ? { opacity: 'var(--opacity-disabled)', cursor: 'not-allowed' } : {}),
             ...style,
           }}
           {...props}

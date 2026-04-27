@@ -52,8 +52,15 @@ export default function TextareaPage() {
         <ThemeSplit cols={1}>
           <div className="flex flex-col gap-4 max-w-sm">
             <Textarea label="Default" placeholder="Placeholder" />
-            <Textarea label="Filled" defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore." />
-            <Textarea label="Error (empty)" placeholder="Required" error="This field is required." />
+            <Textarea
+              label="Filled"
+              defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore."
+            />
+            <Textarea
+              label="Error (empty)"
+              placeholder="Required"
+              error="This field is required."
+            />
             <Textarea
               label="Error (with value)"
               defaultValue="Too short"

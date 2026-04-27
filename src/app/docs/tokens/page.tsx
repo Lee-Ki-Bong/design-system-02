@@ -41,7 +41,6 @@ function ColorSwatch({ name, variable }: { name: string; variable: string }) {
   );
 }
 
-
 function ColorSection() {
   return (
     <section id="color">

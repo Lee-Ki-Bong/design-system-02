@@ -121,8 +121,12 @@ const atoms: { name: string; href: string; desc: string; preview: React.ReactNod
     desc: '사용자 프로필',
     preview: (
       <div className="flex gap-2">
-        <Avatar size={28} color="var(--accent-blue)">KB</Avatar>
-        <Avatar size={28} color="var(--accent-rose)">JY</Avatar>
+        <Avatar size={28} color="var(--accent-blue)">
+          KB
+        </Avatar>
+        <Avatar size={28} color="var(--accent-rose)">
+          JY
+        </Avatar>
       </div>
     ),
   },

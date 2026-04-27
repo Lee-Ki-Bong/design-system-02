@@ -103,9 +103,7 @@ export function FormField({
           }}
         >
           {label}
-          {required && (
-            <span style={{ color: 'var(--color-error)', marginLeft: '2px' }}>*</span>
-          )}
+          {required && <span style={{ color: 'var(--color-error)', marginLeft: '2px' }}>*</span>}
         </label>
       )}
       {children}

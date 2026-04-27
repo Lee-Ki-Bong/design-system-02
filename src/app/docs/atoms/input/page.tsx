@@ -58,7 +58,11 @@ export default function InputPage() {
           <div className="flex flex-col gap-4 max-w-sm">
             <Input placeholder="Default input" />
             <Input label="Label" placeholder="With label" />
-            <Input label="With hint" placeholder="Enter email" hint="We'll never share your email." />
+            <Input
+              label="With hint"
+              placeholder="Enter email"
+              hint="We'll never share your email."
+            />
             <Input label="With icon" placeholder="Search..." iconLeft={<SearchIcon />} />
           </div>
         </ThemeSplit>
